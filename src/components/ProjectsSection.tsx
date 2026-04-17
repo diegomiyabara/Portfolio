@@ -45,7 +45,7 @@ function ProjectCard({ project }: ProjectCardProps) {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary text-sm font-medium hover:underline"
+              className="text-primary text-sm font-medium hover:underline rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               variants={shouldReduceMotion ? undefined : projectLinkVariants}
               initial="rest"
               whileHover="hover"
@@ -66,7 +66,7 @@ export default function ProjectsSection() {
   const projects = t('projects.items', { returnObjects: true }) as ProjectItem[]
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center px-4">
+    <section id="projects" aria-label="Projects" className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-4xl w-full mx-auto text-center">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-10">

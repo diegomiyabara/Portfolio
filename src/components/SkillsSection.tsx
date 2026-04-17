@@ -18,7 +18,7 @@ export default function SkillsSection() {
   const skills = t('skills.items', { returnObjects: true }) as string[]
 
   return (
-    <section id="skills" className="min-h-screen flex items-center justify-center px-4">
+    <section id="skills" aria-label="Skills" className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-4xl w-full mx-auto text-center">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-10">

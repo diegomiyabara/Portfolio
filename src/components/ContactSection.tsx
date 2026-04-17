@@ -49,7 +49,7 @@ function ContactLink({ item, label }: ContactLinkProps) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-surface border border-primary/30 text-text hover:border-primary hover:text-primary transition-colors group"
+      className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-surface border border-primary/30 text-text hover:border-primary hover:text-primary transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       variants={shouldReduceMotion ? undefined : contactLinkVariants}
       initial="rest"
       whileHover="hover"
@@ -68,7 +68,7 @@ export default function ContactSection() {
   const { t } = useTranslation()
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center px-4">
+    <section id="contact" aria-label="Contact" className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-xl w-full mx-auto text-center">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-10">

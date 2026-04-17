@@ -47,7 +47,7 @@ export default function SocialIconBar() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="text-muted hover:text-primary transition-colors"
+          className="text-muted hover:text-primary transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           {icon}
         </a>

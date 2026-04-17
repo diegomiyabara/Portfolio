@@ -20,10 +20,10 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-sm border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-sm border-b border-white/10" role="banner">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="text-primary font-bold text-lg">
+        <a href="#home" className="text-primary font-bold text-lg rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
           Diego
         </a>
 
@@ -33,7 +33,7 @@ export default function Navbar() {
             <a
               key={id}
               href={`#${id}`}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-sm font-medium transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                 activeSection === id
                   ? 'text-primary'
                   : 'text-muted hover:text-text'

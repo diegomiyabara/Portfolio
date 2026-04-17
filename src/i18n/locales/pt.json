@@ -11,7 +11,8 @@
     "title": "Desenvolvedor Magento & React",
     "tagline": "Especialista em Adobe Commerce, PHP e desenvolvimento front-end moderno com React e TypeScript.",
     "ctaContact": "Entre em contato",
-    "ctaGithub": "Ver GitHub"
+    "ctaGithub": "Ver GitHub",
+    "photoAlt": "Diego Cornejo — Desenvolvedor Magento & React"
   },
   "skills": {
     "sectionTitle": "Habilidades",

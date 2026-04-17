@@ -11,7 +11,8 @@
     "title": "Magento & React Developer",
     "tagline": "Specialist in Adobe Commerce, PHP, and modern front-end development with React and TypeScript.",
     "ctaContact": "Get in touch",
-    "ctaGithub": "View GitHub"
+    "ctaGithub": "View GitHub",
+    "photoAlt": "Diego Cornejo — Magento & React Developer"
   },
   "skills": {
     "sectionTitle": "Skills",

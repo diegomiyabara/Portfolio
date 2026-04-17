@@ -32,6 +32,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
+      aria-label="Hero"
       className="min-h-screen flex items-center justify-center px-4"
     >
       <div className="max-w-6xl w-full mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12">
@@ -58,7 +59,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <motion.a
               href="#contact"
-              className="px-6 py-3 rounded-lg bg-primary text-background font-semibold text-sm text-center"
+              className="px-6 py-3 rounded-lg bg-primary text-background font-semibold text-sm text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               variants={shouldReduceMotion ? undefined : btnPrimaryVariants}
               initial="rest"
               whileHover="hover"
@@ -71,7 +72,7 @@ export default function HeroSection() {
               href="https://github.com/diegofcornejo"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-lg border border-primary text-primary font-semibold text-sm text-center"
+              className="px-6 py-3 rounded-lg border border-primary text-primary font-semibold text-sm text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               variants={shouldReduceMotion ? undefined : btnOutlineVariants}
               initial="rest"
               whileHover="hover"
@@ -93,7 +94,7 @@ export default function HeroSection() {
         >
           <img
             src={heroImg}
-            alt="Diego — Magento & React Developer"
+            alt={t('hero.photoAlt')}
             className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover ring-2 ring-primary/30"
           />
         </motion.div>

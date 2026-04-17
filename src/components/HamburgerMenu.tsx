@@ -65,7 +65,7 @@ export default function HamburgerMenu({
                   <a
                     href={`#${id}`}
                     onClick={onClose}
-                    className={`block px-6 py-3 text-sm font-medium transition-colors ${
+                    className={`block px-6 py-3 text-sm font-medium transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset ${
                       activeSection === id
                         ? 'text-primary'
                         : 'text-muted hover:text-text'
