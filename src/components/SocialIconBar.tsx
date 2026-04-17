@@ -1,7 +1,7 @@
 export default function SocialIconBar() {
   const links = [
     {
-      href: 'https://linkedin.com/in/diegomiyabara',
+      href: 'https://linkedin.com/in/diegomiyabaramiyabara',
       label: 'LinkedIn',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -10,7 +10,7 @@ export default function SocialIconBar() {
       ),
     },
     {
-      href: 'https://github.com/diegomiyabara',
+      href: 'https://github.com/diegomiyabaramiyabara',
       label: 'GitHub',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

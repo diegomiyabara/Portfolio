@@ -69,7 +69,7 @@ export default function HeroSection() {
               {t('hero.ctaContact')}
             </motion.a>
             <motion.a
-              href="https://github.com/diegofcornejo"
+              href="https://github.com/diegomiyabarafcornejo"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-lg border border-primary text-primary font-semibold text-sm text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"

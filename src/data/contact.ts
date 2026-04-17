@@ -7,22 +7,22 @@ export interface ContactItem {
 const contact: ContactItem[] = [
   {
     id: 'linkedin',
-    href: 'https://linkedin.com/in/diego',
+    href: 'https://linkedin.com/in/diegomiyabara',
     available: true,
   },
   {
     id: 'github',
-    href: 'https://github.com/diego',
+    href: 'https://github.com/diegomiyabara',
     available: true,
   },
   {
     id: 'email',
-    href: 'mailto:diego@example.com',
+    href: 'mailto:diego.miyabara@hotmail.com',
     available: true,
   },
   {
     id: 'whatsapp',
-    href: 'https://wa.me/5500000000000',
+    href: 'https://wa.me/5543991183010',
     available: false,
   },
 ]
