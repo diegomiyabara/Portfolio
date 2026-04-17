@@ -1,12 +1,11 @@
 import './App.css'
 import Layout from './components/Layout'
+import HeroSection from './components/HeroSection'
 
 function App() {
   return (
     <Layout>
-      <section id="home" className="min-h-screen flex items-center justify-center">
-        <p className="text-muted">Hero section coming soon</p>
-      </section>
+      <HeroSection />
       <section id="skills" className="min-h-screen flex items-center justify-center">
         <p className="text-muted">Skills section coming soon</p>
       </section>
