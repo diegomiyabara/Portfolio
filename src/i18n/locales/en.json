@@ -1,0 +1,59 @@
+{
+  "navbar": {
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Diego",
+    "title": "Magento & React Developer",
+    "tagline": "Specialist in Adobe Commerce, PHP, and modern front-end development with React and TypeScript.",
+    "ctaContact": "Get in touch",
+    "ctaGithub": "View GitHub"
+  },
+  "skills": {
+    "sectionTitle": "Skills",
+    "items": [
+      "Magento",
+      "Adobe Commerce",
+      "PHP",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "MySQL",
+      "Git",
+      "Docker"
+    ]
+  },
+  "projects": {
+    "sectionTitle": "Projects",
+    "items": [
+      {
+        "title": "Custom Magento Store",
+        "description": "Full e-commerce store built with Magento 2, including custom modules, payment gateway integrations, and performance optimizations.",
+        "techStack": ["Magento 2", "PHP", "MySQL", "Docker"]
+      },
+      {
+        "title": "React Dashboard",
+        "description": "Modern admin dashboard built with React and TypeScript, featuring interactive charts, authentication, and REST API integration.",
+        "techStack": ["React", "TypeScript", "Node.js", "MySQL"]
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Contact",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "Email",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "languageToggle": {
+    "label": "PT"
+  }
+}

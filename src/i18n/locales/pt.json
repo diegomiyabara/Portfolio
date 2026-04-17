@@ -1,0 +1,59 @@
+{
+  "navbar": {
+    "home": "Início",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "name": "Diego",
+    "title": "Desenvolvedor Magento & React",
+    "tagline": "Especialista em Adobe Commerce, PHP e desenvolvimento front-end moderno com React e TypeScript.",
+    "ctaContact": "Entre em contato",
+    "ctaGithub": "Ver GitHub"
+  },
+  "skills": {
+    "sectionTitle": "Habilidades",
+    "items": [
+      "Magento",
+      "Adobe Commerce",
+      "PHP",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "MySQL",
+      "Git",
+      "Docker"
+    ]
+  },
+  "projects": {
+    "sectionTitle": "Projetos",
+    "items": [
+      {
+        "title": "Loja Magento Personalizada",
+        "description": "Desenvolvimento de loja virtual completa com Magento 2, incluindo módulos customizados, integração com meios de pagamento e otimizações de performance.",
+        "techStack": ["Magento 2", "PHP", "MySQL", "Docker"]
+      },
+      {
+        "title": "Dashboard React",
+        "description": "Painel administrativo moderno construído com React e TypeScript, com gráficos interativos, autenticação e integração com APIs REST.",
+        "techStack": ["React", "TypeScript", "Node.js", "MySQL"]
+      }
+    ]
+  },
+  "contact": {
+    "sectionTitle": "Contato",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "E-mail",
+    "whatsapp": "WhatsApp"
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados."
+  },
+  "languageToggle": {
+    "label": "EN"
+  }
+}
