@@ -1,7 +1,7 @@
 export default function SocialIconBar() {
   const links = [
     {
-      href: 'https://linkedin.com/in/diego',
+      href: 'https://linkedin.com/in/diegomiyabara',
       label: 'LinkedIn',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -10,7 +10,7 @@ export default function SocialIconBar() {
       ),
     },
     {
-      href: 'https://github.com/diego',
+      href: 'https://github.com/diegomiyabara',
       label: 'GitHub',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -19,7 +19,7 @@ export default function SocialIconBar() {
       ),
     },
     {
-      href: 'mailto:diego@example.com',
+      href: 'mailto:diego.miyabara@hotmail.com',
       label: 'Email',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -28,7 +28,7 @@ export default function SocialIconBar() {
       ),
     },
     {
-      href: 'https://wa.me/5500000000000',
+      href: 'https://wa.me/5543991183010',
       label: 'WhatsApp',
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
