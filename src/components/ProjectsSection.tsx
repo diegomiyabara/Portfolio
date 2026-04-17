@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { motion, useReducedMotion } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
 
 interface ProjectItem {
@@ -12,7 +13,16 @@ interface ProjectCardProps {
   project: ProjectItem
 }
 
+// Compositor-thread safe: only transform (scale) and opacity animated.
+const projectLinkVariants = {
+  rest: { scale: 1, opacity: 1 },
+  hover: { scale: 1.08, opacity: 0.85 },
+  tap: { scale: 0.96 },
+}
+
 function ProjectCard({ project }: ProjectCardProps) {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
     <div className="bg-surface border border-primary/30 rounded-2xl p-6 flex flex-col gap-4">
       <h3 className="text-xl font-semibold text-text">{project.title}</h3>
@@ -30,15 +40,20 @@ function ProjectCard({ project }: ProjectCardProps) {
       {project.links && project.links.length > 0 && (
         <div className="flex gap-3 pt-2">
           {project.links.map((link) => (
-            <a
+            <motion.a
               key={link.label}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary text-sm font-medium hover:underline"
+              variants={shouldReduceMotion ? undefined : projectLinkVariants}
+              initial="rest"
+              whileHover="hover"
+              whileTap="tap"
+              transition={{ duration: 0.15 }}
             >
               {link.label}
-            </a>
+            </motion.a>
           ))}
         </div>
       )}

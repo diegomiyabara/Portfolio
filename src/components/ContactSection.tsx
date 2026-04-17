@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { motion, useReducedMotion } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
 import contact, { type ContactItem } from '../data/contact'
 
@@ -25,27 +26,41 @@ const icons: Record<ContactItem['id'], JSX.Element> = {
   ),
 }
 
+// Compositor-thread safe: only transform (scale) and opacity animated.
+const contactLinkVariants = {
+  rest: { scale: 1, opacity: 1 },
+  hover: { scale: 1.03, opacity: 0.9 },
+  tap: { scale: 0.98 },
+}
+
 interface ContactLinkProps {
   item: ContactItem
   label: string
 }
 
 function ContactLink({ item, label }: ContactLinkProps) {
+  const shouldReduceMotion = useReducedMotion()
+
   if (!item.available) return null
 
   return (
-    <a
+    <motion.a
       href={item.href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
       className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-surface border border-primary/30 text-text hover:border-primary hover:text-primary transition-colors group"
+      variants={shouldReduceMotion ? undefined : contactLinkVariants}
+      initial="rest"
+      whileHover="hover"
+      whileTap="tap"
+      transition={{ duration: 0.15 }}
     >
       <span className="text-muted group-hover:text-primary transition-colors">
         {icons[item.id]}
       </span>
       <span className="font-medium">{label}</span>
-    </a>
+    </motion.a>
   )
 }
 

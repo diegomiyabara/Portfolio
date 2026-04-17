@@ -2,6 +2,19 @@ import { useTranslation } from 'react-i18next'
 import { motion, useReducedMotion } from 'framer-motion'
 import heroImg from '../assets/hero.png'
 
+// Compositor-thread safe: only transform (scale) and opacity are animated.
+const btnPrimaryVariants = {
+  rest: { scale: 1, opacity: 1 },
+  hover: { scale: 1.05, opacity: 0.92 },
+  tap: { scale: 0.97 },
+}
+
+const btnOutlineVariants = {
+  rest: { scale: 1, opacity: 1 },
+  hover: { scale: 1.05, opacity: 0.85 },
+  tap: { scale: 0.97 },
+}
+
 export default function HeroSection() {
   const { t } = useTranslation()
   const shouldReduceMotion = useReducedMotion()
@@ -43,20 +56,30 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a
+            <motion.a
               href="#contact"
-              className="px-6 py-3 rounded-lg bg-primary text-background font-semibold text-sm transition-opacity hover:opacity-90 text-center"
+              className="px-6 py-3 rounded-lg bg-primary text-background font-semibold text-sm text-center"
+              variants={shouldReduceMotion ? undefined : btnPrimaryVariants}
+              initial="rest"
+              whileHover="hover"
+              whileTap="tap"
+              transition={{ duration: 0.15 }}
             >
               {t('hero.ctaContact')}
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="https://github.com/diegofcornejo"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-lg border border-primary text-primary font-semibold text-sm transition-colors hover:bg-primary/10 text-center"
+              className="px-6 py-3 rounded-lg border border-primary text-primary font-semibold text-sm text-center"
+              variants={shouldReduceMotion ? undefined : btnOutlineVariants}
+              initial="rest"
+              whileHover="hover"
+              whileTap="tap"
+              transition={{ duration: 0.15 }}
             >
               {t('hero.ctaGithub')}
-            </a>
+            </motion.a>
           </div>
         </motion.div>
 
