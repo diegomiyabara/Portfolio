@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from '../lib/motion'
 import type { ReactNode } from 'react'
+import { getMediaQueryList } from '../utils/browser'
 
 interface Slide {
   id: string
@@ -19,7 +20,7 @@ export default function SectionSlider({ slides }: SectionSliderProps) {
   const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
-    const media = window.matchMedia('(max-width: 768px)')
+    const media = getMediaQueryList('(max-width: 768px)')
     const update = () => setIsMobile(media.matches)
 
     update()

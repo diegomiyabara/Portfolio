@@ -113,10 +113,10 @@ describe('Responsive layout', () => {
       expect(hamburger).toBeInTheDocument()
     })
 
-    it('desktop nav has 4 anchor links', () => {
+    it('desktop nav has 5 anchor links', () => {
       render(<Navbar />, { wrapper: Wrapper })
       const desktopNav = screen.getByRole('navigation', { name: /main navigation/i })
-      expect(desktopNav.querySelectorAll('a')).toHaveLength(4)
+      expect(desktopNav.querySelectorAll('a')).toHaveLength(5)
     })
   })
 })

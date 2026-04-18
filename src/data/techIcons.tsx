@@ -35,16 +35,16 @@ function createBrandIcon({ hex, path, viewBox = '0 0 24 24' }: BrandIconOptions)
   return BrandIcon
 }
 
-const ReactIcon = createBrandIcon({ hex: siReact.hex, path: siReact.path })
-const TypeScript = createBrandIcon({ hex: siTypescript.hex, path: siTypescript.path })
-const JavaScript = createBrandIcon({ hex: siJavascript.hex, path: siJavascript.path })
-const PHP = createBrandIcon({ hex: siPhp.hex, path: siPhp.path })
-const NodeJs = createBrandIcon({ hex: siNodedotjs.hex, path: siNodedotjs.path })
-const MySQL = createBrandIcon({ hex: siMysql.hex, path: siMysql.path })
-const Git = createBrandIcon({ hex: siGit.hex, path: siGit.path })
-const Docker = createBrandIcon({ hex: siDocker.hex, path: siDocker.path })
+const reactIcon = createBrandIcon({ hex: siReact.hex, path: siReact.path })
+const typeScriptIcon = createBrandIcon({ hex: siTypescript.hex, path: siTypescript.path })
+const javaScriptIcon = createBrandIcon({ hex: siJavascript.hex, path: siJavascript.path })
+const phpIcon = createBrandIcon({ hex: siPhp.hex, path: siPhp.path })
+const nodeJsIcon = createBrandIcon({ hex: siNodedotjs.hex, path: siNodedotjs.path })
+const mySqlIcon = createBrandIcon({ hex: siMysql.hex, path: siMysql.path })
+const gitIcon = createBrandIcon({ hex: siGit.hex, path: siGit.path })
+const dockerIcon = createBrandIcon({ hex: siDocker.hex, path: siDocker.path })
 
-const Magento: FC<SvgProps> = ({ style, ...props }) => (
+const magentoIcon: FC<SvgProps> = ({ style, ...props }) => (
   <svg
     viewBox="0 0 43 50"
     fill="none"
@@ -57,7 +57,7 @@ const Magento: FC<SvgProps> = ({ style, ...props }) => (
   </svg>
 )
 
-const AdobeCommerce: FC<SvgProps> = ({ style, ...props }) => (
+const adobeCommerceIcon: FC<SvgProps> = ({ style, ...props }) => (
   <svg
     viewBox="0 0 17 15"
     fill="none"
@@ -71,18 +71,18 @@ const AdobeCommerce: FC<SvgProps> = ({ style, ...props }) => (
   </svg>
 )
 
-const techIcons: TechIconMap = {
-  React: ReactIcon,
-  TypeScript,
-  JavaScript,
-  Magento,
-  'Adobe Commerce': AdobeCommerce,
-  PHP,
-  'Node.js': NodeJs,
-  MySQL,
-  Git,
-  Docker,
-}
+const techIcons = Object.assign(Object.create(null), {
+  React: reactIcon,
+  TypeScript: typeScriptIcon,
+  JavaScript: javaScriptIcon,
+  Magento: magentoIcon,
+  'Adobe Commerce': adobeCommerceIcon,
+  PHP: phpIcon,
+  'Node.js': nodeJsIcon,
+  MySQL: mySqlIcon,
+  Git: gitIcon,
+  Docker: dockerIcon,
+}) as TechIconMap
 
 export default techIcons
 export type { TechIconMap }

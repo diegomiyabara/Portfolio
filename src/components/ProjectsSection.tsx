@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from '../lib/motion'
 import AnimatedSection from './AnimatedSection'
 import SectionBackground from './SectionBackground'
 
@@ -10,7 +10,7 @@ interface ProjectItem {
   techStack: string[]
   imageUrl?: string
   imageAlt?: string
-  links?: { label: string; url: string }[]
+  links?: readonly { label: string; url: string }[]
 }
 
 interface ProjectCardProps {

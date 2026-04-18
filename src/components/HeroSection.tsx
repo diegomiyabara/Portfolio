@@ -1,7 +1,9 @@
+import type { PointerEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useReducedMotion, useTransform } from '../lib/motion'
 import heroImg from '../assets/hero.png'
-import profileImg from '../assets/foto.png'
+import { getHeroStats } from '../content/profileContent'
+import ProfileSummaryCard from './ProfileSummaryCard'
 
 const btnPrimaryVariants = {
   rest: { scale: 1, opacity: 1 },
@@ -18,16 +20,17 @@ const btnOutlineVariants = {
 export default function HeroSection() {
   const { t } = useTranslation()
   const shouldReduceMotion = useReducedMotion()
+  const heroStats = getHeroStats(t)
 
-  const mouseX = useMotionValue(0.5)
-  const mouseY = useMotionValue(0.5)
+  const mouseX = useMotionValue(0.5) as { set: (value: number) => void }
+  const mouseY = useMotionValue(0.5) as { set: (value: number) => void }
 
-  const bgX = useTransform(mouseX, [0, 1], [-24, 24])
-  const bgY = useTransform(mouseY, [0, 1], [-16, 16])
-  const accentX = useTransform(mouseX, [0, 1], [18, -18])
-  const accentY = useTransform(mouseY, [0, 1], [-12, 12])
+  const bgX = useTransform(mouseX, [0, 1], [-24, 24]) as number
+  const bgY = useTransform(mouseY, [0, 1], [-16, 16]) as number
+  const accentX = useTransform(mouseX, [0, 1], [18, -18]) as number
+  const accentY = useTransform(mouseY, [0, 1], [-12, 12]) as number
 
-  const handlePointerMove = (event: any) => {
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     if (shouldReduceMotion) return
 
     const bounds = event.currentTarget.getBoundingClientRect()
@@ -106,18 +109,17 @@ export default function HeroSection() {
           </p>
 
           <div className="hero-stats mt-10 grid min-w-0 gap-4 md:grid-cols-2 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.7fr)_minmax(0,1fr)]">
-            <div className="rounded-3xl border border-primary/20 bg-background/70 p-4 text-left shadow-xl shadow-primary/5 backdrop-blur-xl">
-              <p className="hero-stat-label text-xs uppercase tracking-[0.35em] text-primary/80">Impacto</p>
-              <p className="hero-stat-value mt-2 text-lg font-semibold text-text">5 anos</p>
-            </div>
-            <div className="rounded-3xl border border-primary/20 bg-background/70 p-4 text-left shadow-xl shadow-primary/5 backdrop-blur-xl md:col-span-2 xl:col-span-1">
-              <p className="hero-stat-label text-xs uppercase tracking-[0.35em] text-primary/80">Tech stack</p>
-              <p className="hero-stat-value mt-2 text-base font-semibold leading-relaxed text-text sm:text-lg">Adobe Commerce &middot; PHP &middot; React &middot; NodeJs &middot; Typescript</p>
-            </div>
-            <div className="rounded-3xl border border-primary/20 bg-background/70 p-4 text-left shadow-xl shadow-primary/5 backdrop-blur-xl">
-              <p className="hero-stat-label text-xs uppercase tracking-[0.35em] text-primary/80">Foco</p>
-              <p className="hero-stat-value mt-2 text-lg font-semibold text-text">E-commerce &amp; Web</p>
-            </div>
+            {heroStats.map(({ id, label, value, featured }) => (
+              <div
+                key={id}
+                className={`rounded-3xl border border-primary/20 bg-background/70 p-4 text-left shadow-xl shadow-primary/5 backdrop-blur-xl ${
+                  featured ? 'md:col-span-2 xl:col-span-1' : ''
+                }`}
+              >
+                <p className="hero-stat-label text-xs uppercase tracking-[0.35em] text-primary/80">{label}</p>
+                <p className="hero-stat-value mt-2 text-lg font-semibold leading-relaxed text-text">{value}</p>
+              </div>
+            ))}
           </div>
 
           <div className="hero-actions mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
@@ -155,30 +157,7 @@ export default function HeroSection() {
           animate="animate"
           transition={{ duration: 0.6, delay: shouldReduceMotion ? 0 : 0.2, ease: 'easeOut' }}
         >
-          <div className="profile-card relative w-full overflow-hidden rounded-[2rem] border border-primary/20 bg-surface/90 p-6 shadow-2xl shadow-primary/10 backdrop-blur-xl">
-            <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/10 via-transparent to-secondary/10" />
-            <div className="profile-card-media relative mx-auto flex aspect-square w-full max-w-[15rem] items-center justify-center rounded-full border-2 border-primary/30 bg-surface/80 shadow-xl shadow-black/20">
-              <img
-                src={profileImg}
-                alt={t('hero.photoAlt')}
-                className="profile-card-image h-[86%] w-[86%] rounded-full object-cover"
-              />
-            </div>
-            <div className="relative mt-6 space-y-3 text-center">
-              <p className="profile-kicker text-sm uppercase tracking-[0.35em] text-primary/75">
-                {t('navbar.profile')}
-              </p>
-              <h2 className="profile-title text-2xl font-bold text-text">
-                {t('hero.name')}
-              </h2>
-              <p className="profile-role text-lg font-semibold text-primary">
-                {t('hero.title')}
-              </p>
-              <p className="profile-subtitle mx-auto max-w-xs text-sm leading-relaxed text-muted">
-                {t('hero.tagline')}
-              </p>
-            </div>
-          </div>
+          <ProfileSummaryCard />
         </motion.div>
       </div>
     </section>

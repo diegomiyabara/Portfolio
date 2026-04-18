@@ -58,11 +58,10 @@ interface ProjectItem {
   techStack: string[]
   imageUrl?: string
   imageAlt?: string
-  links?: { label: string; url: string }[]
+  links?: readonly { label: string; url: string }[]
 }
 
 function TestProjectCard({ project }: { project: ProjectItem }) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { useReducedMotion, motion } = require('framer-motion')
   const shouldReduceMotion = useReducedMotion()
   const [imgError, setImgError] = useState(false)

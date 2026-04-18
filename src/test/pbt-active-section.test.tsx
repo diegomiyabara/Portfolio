@@ -4,7 +4,7 @@
  * Validates: Requirements — useActiveSection always returns exactly one valid section ID
  */
 import { renderHook, act } from '@testing-library/react'
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, vi, beforeEach } from 'vitest'
 import * as fc from 'fast-check'
 import { useActiveSection } from '../hooks/useActiveSection'
 
@@ -61,7 +61,7 @@ describe('PBT Property 4: active section tracking returns exactly one ID', () =>
           if (targetEl && capturedCallback) {
             act(() => {
               capturedCallback(
-                [{ isIntersecting: true, target: targetEl } as IntersectionObserverEntry],
+                [{ isIntersecting: true, target: targetEl } as unknown as IntersectionObserverEntry],
                 {} as IntersectionObserver
               )
             })

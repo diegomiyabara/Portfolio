@@ -141,11 +141,11 @@ describe('ContactSection', () => {
 // Navbar tests
 // ---------------------------------------------------------------------------
 describe('Navbar', () => {
-  it('renders exactly 4 nav anchor links in the desktop nav', () => {
+  it('renders exactly 5 nav anchor links in the desktop nav', () => {
     render(<Navbar />, { wrapper: Wrapper })
     const desktopNav = screen.getByRole('navigation', { name: /main navigation/i })
     const links = desktopNav.querySelectorAll('a')
-    expect(links).toHaveLength(4)
+    expect(links).toHaveLength(5)
   })
 
   it('each desktop nav link has correct href', () => {
@@ -153,6 +153,7 @@ describe('Navbar', () => {
     const desktopNav = screen.getByRole('navigation', { name: /main navigation/i })
     const hrefs = Array.from(desktopNav.querySelectorAll('a')).map((a) => a.getAttribute('href'))
     expect(hrefs).toContain('#home')
+    expect(hrefs).toContain('#about')
     expect(hrefs).toContain('#skills')
     expect(hrefs).toContain('#projects')
     expect(hrefs).toContain('#contact')
@@ -160,7 +161,7 @@ describe('Navbar', () => {
 
   it('renders logo link pointing to #home', () => {
     render(<Navbar />, { wrapper: Wrapper })
-    const logoLink = screen.getByRole('link', { name: /diego/i })
+    const logoLink = screen.getByRole('link', { name: /dm/i })
     expect(logoLink).toHaveAttribute('href', '#home')
   })
 })
@@ -190,7 +191,7 @@ describe('useActiveSection', () => {
     const skillsEl = document.getElementById('skills')!
     act(() => {
       intersectionCallback(
-        [{ isIntersecting: true, target: skillsEl } as IntersectionObserverEntry],
+        [{ isIntersecting: true, target: skillsEl } as unknown as IntersectionObserverEntry],
         {} as IntersectionObserver
       )
     })
@@ -213,7 +214,7 @@ describe('useActiveSection', () => {
     const aboutEl = document.getElementById('about')!
     act(() => {
       intersectionCallback(
-        [{ isIntersecting: false, target: aboutEl } as IntersectionObserverEntry],
+        [{ isIntersecting: false, target: aboutEl } as unknown as IntersectionObserverEntry],
         {} as IntersectionObserver
       )
     })

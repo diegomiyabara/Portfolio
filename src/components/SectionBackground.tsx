@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from '../lib/motion'
 import reactLogo from '../assets/react.svg'
 import viteLogo from '../assets/vite.svg'
+import { getMediaQueryList } from '../utils/browser'
 
 interface SectionBackgroundProps {
   variant: 'about' | 'skills' | 'projects' | 'contact'
@@ -48,28 +49,24 @@ export default function SectionBackground({ variant }: SectionBackgroundProps) {
   })
 
   useEffect(() => {
-    const media = window.matchMedia('(max-width: 768px)')
+    const media = getMediaQueryList('(max-width: 768px)')
     const update = () => setIsMobile(media.matches)
     update()
     media.addEventListener('change', update)
     return () => media.removeEventListener('change', update)
   }, [])
 
-  const moveY = shouldReduceMotion
-    ? 0
-    : useTransform(scrollYProgress, [0, 1], [18, -18])
-  const moveX = shouldReduceMotion
-    ? 0
-    : useTransform(scrollYProgress, [0, 1], [-16, 16])
-  const moveXSlow = shouldReduceMotion
-    ? 0
-    : useTransform(scrollYProgress, [0, 1], [12, -12])
-  const moveYSlow = shouldReduceMotion
-    ? 0
-    : useTransform(scrollYProgress, [0, 1], [-12, 12])
-  const sectionOpacity = shouldReduceMotion
-    ? 1
-    : useTransform(scrollYProgress, [0, 0.12, 0.88, 1], [0, 1, 1, 0])
+  const moveYTransform = useTransform(scrollYProgress, [0, 1], [18, -18]) as number
+  const moveXTransform = useTransform(scrollYProgress, [0, 1], [-16, 16]) as number
+  const moveXSlowTransform = useTransform(scrollYProgress, [0, 1], [12, -12]) as number
+  const moveYSlowTransform = useTransform(scrollYProgress, [0, 1], [-12, 12]) as number
+  const sectionOpacityTransform = useTransform(scrollYProgress, [0, 0.12, 0.88, 1], [0, 1, 1, 0]) as number
+
+  const moveY = shouldReduceMotion ? 0 : moveYTransform
+  const moveX = shouldReduceMotion ? 0 : moveXTransform
+  const moveXSlow = shouldReduceMotion ? 0 : moveXSlowTransform
+  const moveYSlow = shouldReduceMotion ? 0 : moveYSlowTransform
+  const sectionOpacity = shouldReduceMotion ? 1 : sectionOpacityTransform
 
   const config = variantOptions[variant]
   const shape1Class = isMobile ? config.shape1Mobile : config.shape1

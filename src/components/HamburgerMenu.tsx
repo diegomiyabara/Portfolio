@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from '../lib/motion'
+import { getNavLinks } from '../config/navigation'
 
 interface HamburgerMenuProps {
   isOpen: boolean
@@ -9,14 +10,6 @@ interface HamburgerMenuProps {
   showProfileLink: boolean
 }
 
-const BASE_NAV_LINKS = [
-  { id: 'home', key: 'navbar.home' },
-  { id: 'about', key: 'navbar.about' },
-  { id: 'skills', key: 'navbar.skills' },
-  { id: 'projects', key: 'navbar.projects' },
-  { id: 'contact', key: 'navbar.contact' },
-] as const
-
 export default function HamburgerMenu({
   isOpen,
   onToggle,
@@ -25,9 +18,7 @@ export default function HamburgerMenu({
   showProfileLink,
 }: HamburgerMenuProps) {
   const { t } = useTranslation()
-  const navLinks = showProfileLink
-    ? [{ id: 'profile', key: 'navbar.profile' as const }, ...BASE_NAV_LINKS]
-    : [...BASE_NAV_LINKS]
+  const navLinks = getNavLinks(showProfileLink)
 
   return (
     <div className="md:hidden">

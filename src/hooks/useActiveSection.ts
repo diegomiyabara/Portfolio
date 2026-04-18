@@ -4,7 +4,7 @@ export function useActiveSection(sectionIds: string[]): string {
   const [activeSection, setActiveSection] = useState<string>(sectionIds[0] ?? '')
 
   useEffect(() => {
-    if (sectionIds.length === 0) return
+    if (sectionIds.length === 0 || typeof IntersectionObserver !== 'function') return
 
     const observer = new IntersectionObserver(
       (entries) => {

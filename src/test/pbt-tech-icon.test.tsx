@@ -120,9 +120,6 @@ describe('Property 9: TechIcon usa currentColor', () => {
         const svg = container.querySelector('svg')
         expect(svg).not.toBeNull()
 
-        const fillAttr = svg!.getAttribute('fill')
-        const strokeAttr = svg!.getAttribute('stroke')
-
         // Check SVG root or any descendant element uses currentColor
         const allElements = [svg!, ...Array.from(svg!.querySelectorAll('*'))]
         const usesCurrentColor = allElements.some(

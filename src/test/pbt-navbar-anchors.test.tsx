@@ -55,10 +55,10 @@ function Wrapper({ children }: { children: React.ReactNode }) {
 }
 
 describe('PBT Property 6: navbar renders exactly one anchor per section', () => {
-  it('desktop nav always contains exactly 4 anchors', () => {
+  it('desktop nav always contains exactly 5 anchors', () => {
     fc.assert(
       fc.property(
-        fc.constant(['home', 'skills', 'projects', 'contact'] as const),
+        fc.constant(['home', 'about', 'skills', 'projects', 'contact'] as const),
         (sectionIds) => {
           const { unmount } = render(<Navbar />, { wrapper: Wrapper })
           const desktopNav = screen.getByRole('navigation', { name: /main navigation/i })
@@ -73,7 +73,7 @@ describe('PBT Property 6: navbar renders exactly one anchor per section', () => 
   })
 
   it('each section ID has exactly one corresponding anchor with correct href', () => {
-    const sectionIds = ['home', 'skills', 'projects', 'contact']
+    const sectionIds = ['home', 'about', 'skills', 'projects', 'contact']
     render(<Navbar />, { wrapper: Wrapper })
     const desktopNav = screen.getByRole('navigation', { name: /main navigation/i })
     const anchors = Array.from(desktopNav.querySelectorAll('a'))
