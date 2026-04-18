@@ -3,6 +3,7 @@
  * Every key in PT must exist in EN and vice versa.
  */
 import { describe, it, expect } from 'vitest'
+import * as fc from 'fast-check'
 import enJSON from '../i18n/locales/en.json'
 import ptJSON from '../i18n/locales/pt.json'
 
@@ -32,5 +33,49 @@ describe('i18n key parity', () => {
 
   it('both locales have the same number of keys', () => {
     expect(enKeys.length).toBe(ptKeys.length)
+  })
+})
+
+// Feature: portfolio-visual-content, Property 8: Paridade i18n dos campos de projeto
+describe('Property 8: Paridade i18n dos campos de projeto', () => {
+  // **Validates: Requirements 4.2**
+  type ProjectItem = Record<string, unknown>
+
+  const ptProjects = (ptJSON as { projects: { items: ProjectItem[] } }).projects.items
+  const enProjects = (enJSON as { projects: { items: ProjectItem[] } }).projects.items
+
+  function collectProjectKeys(item: ProjectItem): string[] {
+    return Object.entries(item).flatMap(([key, value]) => {
+      if (Array.isArray(value) && value.length > 0 && typeof value[0] === 'object') {
+        // For arrays of objects (e.g. links), collect keys from each element
+        const nestedKeys = (value as ProjectItem[]).flatMap((el) =>
+          Object.keys(el).map((k) => `${key}[].${k}`)
+        )
+        return [key, ...nestedKeys]
+      }
+      return [key]
+    })
+  }
+
+  it('pt and en have the same number of project items', () => {
+    expect(enProjects.length).toBe(ptProjects.length)
+  })
+
+  it('for any project index, pt and en project items have the same field keys', () => {
+    fc.assert(
+      fc.property(
+        fc.integer({ min: 0, max: ptProjects.length - 1 }),
+        (index) => {
+          const ptItem = ptProjects[index]
+          const enItem = enProjects[index]
+
+          const ptKeys = collectProjectKeys(ptItem).sort()
+          const enKeys = collectProjectKeys(enItem).sort()
+
+          expect(ptKeys).toEqual(enKeys)
+        }
+      ),
+      { numRuns: 100 }
+    )
   })
 })

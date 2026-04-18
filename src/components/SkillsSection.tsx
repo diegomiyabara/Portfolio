@@ -1,13 +1,34 @@
 import { useTranslation } from 'react-i18next'
 import AnimatedSection from './AnimatedSection'
+import techIcons from '../data/techIcons'
+
+interface TechIconProps {
+  skill: string
+  size?: number
+}
+
+function TechIcon({ skill, size = 20 }: TechIconProps) {
+  const IconComponent = techIcons[skill]
+  if (!IconComponent) return null
+  return (
+    <IconComponent
+      aria-hidden="true"
+      focusable="false"
+      width={size}
+      height={size}
+    />
+  )
+}
 
 interface SkillBadgeProps {
   label: string
 }
 
 function SkillBadge({ label }: SkillBadgeProps) {
+  const icon = <TechIcon skill={label} />
   return (
-    <span className="px-4 py-2 rounded-full bg-surface border border-primary/30 text-text text-sm font-medium">
+    <span className="px-4 py-2 rounded-full bg-surface border border-primary/30 text-text text-sm font-medium flex items-center gap-2">
+      {icon}
       {label}
     </span>
   )

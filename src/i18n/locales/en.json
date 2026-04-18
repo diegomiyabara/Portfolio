@@ -35,12 +35,22 @@
       {
         "title": "Custom Magento Store",
         "description": "Full e-commerce store built with Magento 2, including custom modules, payment gateway integrations, and performance optimizations.",
-        "techStack": ["Magento 2", "PHP", "MySQL", "Docker"]
+        "techStack": ["Magento 2", "PHP", "MySQL", "Docker"],
+        "imageAlt": "Screenshot of the Custom Magento Store",
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/diegocornejo/magento-store" },
+          { "label": "Demo", "url": "https://demo.diegocornejo.dev/magento" }
+        ]
       },
       {
         "title": "React Dashboard",
         "description": "Modern admin dashboard built with React and TypeScript, featuring interactive charts, authentication, and REST API integration.",
-        "techStack": ["React", "TypeScript", "Node.js", "MySQL"]
+        "techStack": ["React", "TypeScript", "Node.js", "MySQL"],
+        "imageAlt": "Screenshot of the React Dashboard",
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/diegocornejo/react-dashboard" },
+          { "label": "Demo", "url": "https://demo.diegocornejo.dev/dashboard" }
+        ]
       }
     ]
   },

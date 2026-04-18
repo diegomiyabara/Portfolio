@@ -35,12 +35,22 @@
       {
         "title": "Loja Magento Personalizada",
         "description": "Desenvolvimento de loja virtual completa com Magento 2, incluindo módulos customizados, integração com meios de pagamento e otimizações de performance.",
-        "techStack": ["Magento 2", "PHP", "MySQL", "Docker"]
+        "techStack": ["Magento 2", "PHP", "MySQL", "Docker"],
+        "imageAlt": "Screenshot da Loja Magento Personalizada",
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/diegocornejo/magento-store" },
+          { "label": "Demo", "url": "https://demo.diegocornejo.dev/magento" }
+        ]
       },
       {
         "title": "Dashboard React",
         "description": "Painel administrativo moderno construído com React e TypeScript, com gráficos interativos, autenticação e integração com APIs REST.",
-        "techStack": ["React", "TypeScript", "Node.js", "MySQL"]
+        "techStack": ["React", "TypeScript", "Node.js", "MySQL"],
+        "imageAlt": "Screenshot do Dashboard React",
+        "links": [
+          { "label": "GitHub", "url": "https://github.com/diegocornejo/react-dashboard" },
+          { "label": "Demo", "url": "https://demo.diegocornejo.dev/dashboard" }
+        ]
       }
     ]
   },
