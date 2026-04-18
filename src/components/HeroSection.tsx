@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { motion, useReducedMotion, useMotionValue, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion'
 import heroImg from '../assets/hero.png'
 import profileImg from '../assets/foto.png'
 
@@ -55,7 +55,7 @@ export default function HeroSection() {
       className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden"
     >
       <motion.div
-        className="pointer-events-none absolute inset-0 w-screen left-1/2 -translate-x-1/2"
+        className="pointer-events-none absolute inset-0 left-1/2 w-screen -translate-x-1/2"
         style={{
           backgroundImage: `url(${heroImg})`,
           backgroundSize: 'cover',
@@ -77,46 +77,46 @@ export default function HeroSection() {
         style={shouldReduceMotion ? undefined : { x: accentX, y: accentY }}
       />
 
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col-reverse gap-10 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-0">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col-reverse gap-10 px-4 py-12 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
         <motion.div
-          className="flex-1 text-center md:text-left"
+          className="flex-1 text-center lg:min-w-0 lg:text-left"
           onPointerMove={handlePointerMove}
           variants={textVariants}
           initial="initial"
           animate="animate"
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-4 py-2 text-primary text-xs font-semibold uppercase tracking-[0.3em] mb-6">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
             <span className="h-2.5 w-2.5 rounded-full bg-primary animate-pulse" />
             {t('hero.badge')}
           </div>
 
-          <p className="text-muted text-lg mb-2">{t('hero.greeting')}</p>
+          <p className="mb-2 text-lg text-muted">{t('hero.greeting')}</p>
           <h1 className="text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
             {t('hero.name')}
           </h1>
-          <p className="text-primary font-semibold text-xl md:text-2xl mb-4">
+          <p className="mb-4 text-xl font-semibold text-primary md:text-2xl">
             {t('hero.title')}
           </p>
-          <p className="text-muted text-sm font-mono mb-8 tracking-widest uppercase">
+          <p className="mb-8 font-mono text-sm uppercase tracking-widest text-muted">
             {t('hero.subtitle')}
           </p>
-          <p className="mx-auto max-w-2xl text-muted text-base leading-relaxed md:mx-0 md:text-lg">
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted md:mx-0 md:text-lg">
             {t('hero.tagline')}
           </p>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.7fr)_minmax(0,1fr)]">
             <div className="rounded-3xl border border-primary/20 bg-background/70 p-4 text-left shadow-xl shadow-primary/5 backdrop-blur-xl">
               <p className="text-xs uppercase tracking-[0.35em] text-primary/80">Impacto</p>
               <p className="mt-2 text-lg font-semibold text-text">5 anos</p>
             </div>
-            <div className="rounded-3xl border border-primary/20 bg-background/70 p-4 text-left shadow-xl shadow-primary/5 backdrop-blur-xl">
+            <div className="rounded-3xl border border-primary/20 bg-background/70 p-4 text-left shadow-xl shadow-primary/5 backdrop-blur-xl md:col-span-2 xl:col-span-1">
               <p className="text-xs uppercase tracking-[0.35em] text-primary/80">Tech stack</p>
-              <p className="mt-2 text-lg font-semibold text-text">React · TypeScript</p>
+              <p className="mt-2 text-base font-semibold leading-relaxed text-text sm:text-lg">Adobe Commerce &middot; PHP &middot; React &middot; NodeJs &middot; Typescript</p>
             </div>
             <div className="rounded-3xl border border-primary/20 bg-background/70 p-4 text-left shadow-xl shadow-primary/5 backdrop-blur-xl">
               <p className="text-xs uppercase tracking-[0.35em] text-primary/80">Foco</p>
-              <p className="mt-2 text-lg font-semibold text-text">E-commerce & Web</p>
+              <p className="mt-2 text-lg font-semibold text-text">E-commerce &amp; Web</p>
             </div>
           </div>
 
@@ -149,7 +149,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="flex-shrink-0"
+          className="mx-auto w-full max-w-[360px] flex-shrink-0 lg:mx-0 lg:max-w-[380px]"
           variants={photoVariants}
           initial="initial"
           animate="animate"
@@ -157,17 +157,17 @@ export default function HeroSection() {
         >
           <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-surface/90 p-6 shadow-2xl shadow-primary/10 backdrop-blur-xl">
             <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/10 via-transparent to-secondary/10" />
-            <div className="relative flex h-[320px] w-[320px] items-center justify-center rounded-full border-2 border-primary/30 bg-surface/80 shadow-xl shadow-black/20">
+            <div className="relative mx-auto flex aspect-square w-full max-w-[320px] items-center justify-center rounded-full border-2 border-primary/30 bg-surface/80 shadow-xl shadow-black/20">
               <img
                 src={profileImg}
                 alt={t('hero.photoAlt')}
-                className="h-72 w-72 rounded-full object-cover"
+                className="h-[88%] w-[88%] rounded-full object-cover"
               />
             </div>
             <div className="relative mt-8 space-y-3 text-center">
               <p className="text-sm uppercase tracking-[0.35em] text-primary/70">Perfil</p>
               <p className="text-lg font-semibold text-text">{t('hero.title')}</p>
-              <p className="mx-auto max-w-xs text-muted text-sm leading-relaxed">{t('hero.subtitle')}</p>
+              <p className="mx-auto max-w-xs text-sm leading-relaxed text-muted">{t('hero.subtitle')}</p>
             </div>
           </div>
         </motion.div>

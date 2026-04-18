@@ -46,7 +46,7 @@ export default function SkillsSection() {
   return (
     <section id="skills" aria-label="Skills" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
       <SectionBackground variant="skills" />
-      <div className="relative z-10 mx-auto w-full max-w-4xl px-4">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-4">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-12 text-center">
             {t('skills.sectionTitle')}

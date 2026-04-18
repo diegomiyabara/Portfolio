@@ -159,7 +159,7 @@ export default function ProjectsSection() {
   return (
     <section id="projects" aria-label="Projects" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
       <SectionBackground variant="projects" />
-      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 text-center">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-10">
             {t('projects.sectionTitle')}
