@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import AnimatedSection from './AnimatedSection'
+import SectionBackground from './SectionBackground'
 
 export default function AboutSection() {
   const { t } = useTranslation()
@@ -11,8 +12,9 @@ export default function AboutSection() {
   ]
 
   return (
-    <section id="about" aria-label="About" className="min-h-screen flex items-center justify-center px-4">
-      <div className="max-w-4xl w-full mx-auto">
+    <section id="about" aria-label="About" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
+      <SectionBackground variant="about" />
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-10 text-center">
             {t('about.sectionTitle')}

@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="text-primary font-bold text-lg rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary tracking-tight">
-          DC<span className="text-text/40">.</span>
+          DM<span className="text-text/40">.</span>
         </a>
 
         {/* Desktop nav links */}

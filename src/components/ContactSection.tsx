@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion, useReducedMotion } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
+import SectionBackground from './SectionBackground'
 import contact, { type ContactItem } from '../data/contact'
 
 const icons: Record<ContactItem['id'], JSX.Element> = {
@@ -68,8 +69,9 @@ export default function ContactSection() {
   const { t } = useTranslation()
 
   return (
-    <section id="contact" aria-label="Contact" className="min-h-screen flex items-center justify-center px-4">
-      <div className="max-w-xl w-full mx-auto text-center">
+    <section id="contact" aria-label="Contact" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
+      <SectionBackground variant="contact" />
+      <div className="relative z-10 mx-auto w-full max-w-xl px-4 text-center">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-3">
             {t('contact.sectionTitle')}

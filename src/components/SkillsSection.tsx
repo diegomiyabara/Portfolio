@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import AnimatedSection from './AnimatedSection'
+import SectionBackground from './SectionBackground'
 import techIcons from '../data/techIcons'
 
 interface TechIconProps {
@@ -43,8 +44,9 @@ export default function SkillsSection() {
   const categories = t('skills.categories', { returnObjects: true }) as SkillCategory[]
 
   return (
-    <section id="skills" aria-label="Skills" className="min-h-screen flex items-center justify-center px-4">
-      <div className="max-w-4xl w-full mx-auto">
+    <section id="skills" aria-label="Skills" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
+      <SectionBackground variant="skills" />
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-12 text-center">
             {t('skills.sectionTitle')}

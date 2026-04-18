@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useReducedMotion } from 'framer-motion'
 import AnimatedSection from './AnimatedSection'
+import SectionBackground from './SectionBackground'
 
 interface ProjectItem {
   title: string
@@ -37,19 +38,16 @@ function ProjectCard({ project }: ProjectCardProps) {
         className="h-40 rounded-t-2xl overflow-hidden"
       >
         {showImage ? (
-          <motion.div
-            className="w-full h-full"
-            initial={shouldReduceMotion ? false : { opacity: 0 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1 }}
-          >
-            <img
-              data-testid="project-image"
-              src={project.imageUrl}
-              alt={project.imageAlt ?? project.title}
-              className="object-cover w-full h-full"
-              onError={() => setImgError(true)}
-            />
-          </motion.div>
+          <motion.img
+            data-testid="project-image"
+            src={project.imageUrl}
+            alt={project.imageAlt ?? project.title}
+            className="object-cover w-full h-full"
+            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.98 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+            onError={() => setImgError(true)}
+          />
         ) : (
           <div
             data-testid="project-placeholder"
@@ -159,8 +157,9 @@ export default function ProjectsSection() {
   const projects = t('projects.items', { returnObjects: true }) as ProjectItem[]
 
   return (
-    <section id="projects" aria-label="Projects" className="min-h-screen flex items-center justify-center px-4">
-      <div className="max-w-4xl w-full mx-auto text-center">
+    <section id="projects" aria-label="Projects" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
+      <SectionBackground variant="projects" />
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 text-center">
         <AnimatedSection>
           <h2 className="text-3xl md:text-4xl font-bold text-text mb-10">
             {t('projects.sectionTitle')}
