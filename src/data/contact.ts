@@ -23,7 +23,7 @@ const contact: ContactItem[] = [
   {
     id: 'whatsapp',
     href: 'https://wa.me/5543991183010',
-    available: false,
+    available: true,
   },
 ]
 
