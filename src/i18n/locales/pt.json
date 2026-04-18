@@ -8,13 +8,13 @@
   },
   "hero": {
     "greeting": "Olá, eu sou",
-    "name": "Diego Cornejo",
+    "name": "Diego Miyabara",
     "title": "Desenvolvedor Full Stack",
     "subtitle": "Magento · React · PHP",
     "tagline": "5 anos desenvolvendo soluções e-commerce e aplicações web modernas. Especialista em Adobe Commerce, PHP e React.",
     "ctaContact": "Entre em contato",
     "ctaGithub": "Ver GitHub",
-    "photoAlt": "Diego Cornejo — Desenvolvedor Full Stack",
+    "photoAlt": "Diego Miyabara — Desenvolvedor Full Stack",
     "badge": "Disponível para oportunidades"
   },
   "about": {
@@ -54,8 +54,8 @@
         "techStack": ["Magento 2", "PHP", "MySQL", "Docker"],
         "imageAlt": "Screenshot da Loja Magento Personalizada",
         "links": [
-          { "label": "GitHub", "url": "https://github.com/diegocornejo/magento-store" },
-          { "label": "Demo", "url": "https://demo.diegocornejo.dev/magento" }
+          { "label": "GitHub", "url": "https://github.com/diegomiyabara/magento-store" },
+          { "label": "Demo", "url": "https://demo.diegomiyabara.dev/magento" }
         ]
       },
       {
@@ -64,8 +64,8 @@
         "techStack": ["React", "TypeScript", "Node.js", "MySQL"],
         "imageAlt": "Screenshot do Dashboard React",
         "links": [
-          { "label": "GitHub", "url": "https://github.com/diegocornejo/react-dashboard" },
-          { "label": "Demo", "url": "https://demo.diegocornejo.dev/dashboard" }
+          { "label": "GitHub", "url": "https://github.com/diegomiyabara/react-dashboard" },
+          { "label": "Demo", "url": "https://demo.diegomiyabara.dev/dashboard" }
         ]
       }
     ]
