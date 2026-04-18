@@ -1,32 +1,48 @@
 {
   "navbar": {
     "home": "Início",
+    "about": "Sobre",
     "skills": "Habilidades",
     "projects": "Projetos",
     "contact": "Contato"
   },
   "hero": {
     "greeting": "Olá, eu sou",
-    "name": "Diego",
-    "title": "Desenvolvedor Magento & React",
-    "tagline": "Especialista em Adobe Commerce, PHP e desenvolvimento front-end moderno com React e TypeScript.",
+    "name": "Diego Cornejo",
+    "title": "Desenvolvedor Full Stack",
+    "subtitle": "Magento · React · PHP",
+    "tagline": "5 anos desenvolvendo soluções e-commerce e aplicações web modernas. Especialista em Adobe Commerce, PHP e React.",
     "ctaContact": "Entre em contato",
     "ctaGithub": "Ver GitHub",
-    "photoAlt": "Diego Cornejo — Desenvolvedor Magento & React"
+    "photoAlt": "Diego Cornejo — Desenvolvedor Full Stack",
+    "badge": "Disponível para oportunidades"
+  },
+  "about": {
+    "sectionTitle": "Sobre mim",
+    "paragraph1": "Sou desenvolvedor Full Stack com 5 anos de experiência, especializado em e-commerce com Magento 2 / Adobe Commerce e desenvolvimento front-end moderno com React e TypeScript.",
+    "paragraph2": "Tenho sólida experiência em criar módulos customizados, integrações com APIs de pagamento e otimizações de performance. No front-end, construo interfaces responsivas, acessíveis e com foco em experiência do usuário.",
+    "highlight1": "5+",
+    "highlight1Label": "Anos de experiência",
+    "highlight2": "10+",
+    "highlight2Label": "Projetos entregues",
+    "highlight3": "2",
+    "highlight3Label": "Especializações"
   },
   "skills": {
     "sectionTitle": "Habilidades",
-    "items": [
-      "Magento",
-      "Adobe Commerce",
-      "PHP",
-      "React",
-      "TypeScript",
-      "JavaScript",
-      "Node.js",
-      "MySQL",
-      "Git",
-      "Docker"
+    "categories": [
+      {
+        "name": "Front-end",
+        "items": ["React", "TypeScript", "JavaScript"]
+      },
+      {
+        "name": "Back-end",
+        "items": ["Magento", "Adobe Commerce", "PHP", "Node.js"]
+      },
+      {
+        "name": "Banco de dados & DevOps",
+        "items": ["MySQL", "Git", "Docker"]
+      }
     ]
   },
   "projects": {
@@ -55,14 +71,16 @@
     ]
   },
   "contact": {
-    "sectionTitle": "Contato",
+    "sectionTitle": "Vamos conversar",
+    "subtitle": "Aberto a novas oportunidades. Me chame por qualquer canal abaixo.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "email": "E-mail",
     "whatsapp": "WhatsApp"
   },
   "footer": {
-    "rights": "Todos os direitos reservados."
+    "rights": "Todos os direitos reservados.",
+    "madeWith": "Feito com React & TypeScript"
   },
   "languageToggle": {
     "label": "EN"

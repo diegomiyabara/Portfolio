@@ -21,7 +21,8 @@ export default function Layout({ children }: LayoutProps) {
       <Navbar />
       <main id="main-content" className="flex-1 pt-16">{children}</main>
       <footer className="py-6 text-center text-sm text-muted border-t border-white/10">
-        © {year} Diego. {t('footer.rights')}
+        <p>© {year} Diego Cornejo. {t('footer.rights')}</p>
+        <p className="mt-1 text-xs text-muted/60">{t('footer.madeWith')}</p>
       </footer>
     </div>
   )

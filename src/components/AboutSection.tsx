@@ -1,0 +1,49 @@
+import { useTranslation } from 'react-i18next'
+import AnimatedSection from './AnimatedSection'
+
+export default function AboutSection() {
+  const { t } = useTranslation()
+
+  const highlights = [
+    { value: t('about.highlight1'), label: t('about.highlight1Label') },
+    { value: t('about.highlight2'), label: t('about.highlight2Label') },
+    { value: t('about.highlight3'), label: t('about.highlight3Label') },
+  ]
+
+  return (
+    <section id="about" aria-label="About" className="min-h-screen flex items-center justify-center px-4">
+      <div className="max-w-4xl w-full mx-auto">
+        <AnimatedSection>
+          <h2 className="text-3xl md:text-4xl font-bold text-text mb-10 text-center">
+            {t('about.sectionTitle')}
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Text */}
+            <div className="flex flex-col gap-5">
+              <p className="text-muted text-base leading-relaxed">
+                {t('about.paragraph1')}
+              </p>
+              <p className="text-muted text-base leading-relaxed">
+                {t('about.paragraph2')}
+              </p>
+            </div>
+
+            {/* Highlights */}
+            <div className="grid grid-cols-3 gap-4">
+              {highlights.map(({ value, label }) => (
+                <div
+                  key={label}
+                  className="flex flex-col items-center text-center p-4 rounded-2xl bg-surface border border-primary/20"
+                >
+                  <span className="text-3xl font-bold text-primary mb-1">{value}</span>
+                  <span className="text-xs text-muted leading-tight">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+  )
+}

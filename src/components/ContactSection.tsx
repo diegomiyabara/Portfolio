@@ -71,9 +71,10 @@ export default function ContactSection() {
     <section id="contact" aria-label="Contact" className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-xl w-full mx-auto text-center">
         <AnimatedSection>
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-text mb-3">
             {t('contact.sectionTitle')}
           </h2>
+          <p className="text-muted text-base mb-10">{t('contact.subtitle')}</p>
           <div className="flex flex-col gap-4">
             {contact.map((item) => (
               <ContactLink key={item.id} item={item} label={t(`contact.${item.id}`)} />

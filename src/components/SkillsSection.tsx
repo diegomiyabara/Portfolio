@@ -25,29 +25,42 @@ interface SkillBadgeProps {
 }
 
 function SkillBadge({ label }: SkillBadgeProps) {
-  const icon = <TechIcon skill={label} />
   return (
-    <span className="px-4 py-2 rounded-full bg-surface border border-primary/30 text-text text-sm font-medium flex items-center gap-2">
-      {icon}
+    <span className="px-4 py-2 rounded-full bg-surface border border-primary/20 text-text text-sm font-medium flex items-center gap-2 hover:border-primary/50 transition-colors">
+      <TechIcon skill={label} />
       {label}
     </span>
   )
 }
 
+interface SkillCategory {
+  name: string
+  items: string[]
+}
+
 export default function SkillsSection() {
   const { t } = useTranslation()
-  const skills = t('skills.items', { returnObjects: true }) as string[]
+  const categories = t('skills.categories', { returnObjects: true }) as SkillCategory[]
 
   return (
     <section id="skills" aria-label="Skills" className="min-h-screen flex items-center justify-center px-4">
-      <div className="max-w-4xl w-full mx-auto text-center">
+      <div className="max-w-4xl w-full mx-auto">
         <AnimatedSection>
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-text mb-12 text-center">
             {t('skills.sectionTitle')}
           </h2>
-          <div className="flex flex-wrap justify-center gap-3">
-            {skills.map((skill) => (
-              <SkillBadge key={skill} label={skill} />
+          <div className="flex flex-col gap-10">
+            {categories.map((category) => (
+              <div key={category.name}>
+                <h3 className="text-xs font-semibold text-muted uppercase tracking-widest mb-4 pl-1">
+                  {category.name}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {category.items.map((skill) => (
+                    <SkillBadge key={skill} label={skill} />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </AnimatedSection>
