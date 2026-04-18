@@ -9,7 +9,8 @@ interface TechIconProps {
 }
 
 function TechIcon({ skill, size = 20 }: TechIconProps) {
-  const IconComponent = techIcons[skill]
+  const hasMappedIcon = Object.prototype.hasOwnProperty.call(techIcons, skill)
+  const IconComponent = hasMappedIcon ? techIcons[skill] : undefined
   if (!IconComponent) return null
   return (
     <IconComponent

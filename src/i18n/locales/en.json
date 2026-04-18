@@ -11,12 +11,26 @@
     "greeting": "Hi, I'm",
     "name": "Diego Miyabara",
     "title": "Full Stack Developer",
-    "subtitle": "Magento · PHP · ReactJs · NodeJs",
+    "subtitle": "Adobe Commerce · PHP · React · NodeJs · Typescript",
     "tagline": "5 years building e-commerce solutions and modern web applications. Specialist in Adobe Commerce, PHP and React.",
     "ctaContact": "Get in touch",
     "ctaGithub": "View GitHub",
     "photoAlt": "Diego Miyabara — Full Stack Developer",
-    "badge": "Open to opportunities"
+    "badge": "Open to opportunities",
+    "stats": {
+      "impact": {
+        "label": "Impact",
+        "value": "5 years"
+      },
+      "techStack": {
+        "label": "Tech stack",
+        "value": "Adobe Commerce · PHP · React · NodeJs · Typescript"
+      },
+      "focus": {
+        "label": "Focus",
+        "value": "E-commerce & Web"
+      }
+    }
   },
   "about": {
     "sectionTitle": "About me",

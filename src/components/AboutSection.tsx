@@ -1,15 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import AnimatedSection from './AnimatedSection'
 import SectionBackground from './SectionBackground'
+import { getAboutHighlights } from '../content/profileContent'
 
 export default function AboutSection() {
   const { t } = useTranslation()
-
-  const highlights = [
-    { value: t('about.highlight1'), label: t('about.highlight1Label') },
-    { value: t('about.highlight2'), label: t('about.highlight2Label') },
-    { value: t('about.highlight3'), label: t('about.highlight3Label') },
-  ]
+  const highlights = getAboutHighlights(t)
 
   return (
     <section id="about" aria-label="About" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">

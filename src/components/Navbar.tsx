@@ -2,29 +2,16 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useSplitHeroSection } from '../hooks/useSplitHeroSection'
+import { getNavLinks, getSectionIds } from '../config/navigation'
 import LanguageToggle from './LanguageToggle'
 import SocialIconBar from './SocialIconBar'
 import HamburgerMenu from './HamburgerMenu'
 
-const BASE_SECTION_IDS = ['home', 'about', 'skills', 'projects', 'contact'] as const
-
-const BASE_NAV_LINKS = [
-  { id: 'home', key: 'navbar.home' },
-  { id: 'about', key: 'navbar.about' },
-  { id: 'skills', key: 'navbar.skills' },
-  { id: 'projects', key: 'navbar.projects' },
-  { id: 'contact', key: 'navbar.contact' },
-] as const
-
 export default function Navbar() {
   const { t } = useTranslation()
   const shouldSplitHero = useSplitHeroSection()
-  const sectionIds = shouldSplitHero
-    ? ['profile', ...BASE_SECTION_IDS]
-    : [...BASE_SECTION_IDS]
-  const navLinks = shouldSplitHero
-    ? [{ id: 'profile', key: 'navbar.profile' as const }, ...BASE_NAV_LINKS]
-    : [...BASE_NAV_LINKS]
+  const sectionIds = getSectionIds(shouldSplitHero)
+  const navLinks = getNavLinks(shouldSplitHero)
   const activeSection = useActiveSection(sectionIds)
   const [menuOpen, setMenuOpen] = useState(false)
 
