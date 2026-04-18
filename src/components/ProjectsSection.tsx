@@ -31,11 +31,11 @@ function ProjectCard({ project }: ProjectCardProps) {
   const showImage = project.imageUrl && !imgError
 
   return (
-    <div className="bg-surface border border-primary/30 rounded-2xl overflow-hidden flex flex-col gap-4">
+    <div className="project-card flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-primary/30 bg-surface">
       {/* Visual area */}
       <div
         data-testid="project-visual-area"
-        className="h-40 rounded-t-2xl overflow-hidden"
+        className="project-media h-40 overflow-hidden rounded-t-2xl"
       >
         {showImage ? (
           <motion.img
@@ -114,39 +114,39 @@ function ProjectCard({ project }: ProjectCardProps) {
         )}
       </div>
       {/* Card body */}
-      <div className="px-6 pb-6 flex flex-col gap-4">
-      <h3 className="text-xl font-semibold text-text">{project.title}</h3>
-      <p className="text-muted text-sm leading-relaxed">{project.description}</p>
-      <div className="flex flex-wrap gap-2 mt-auto">
-        {project.techStack.map((tech) => (
-          <span
-            key={tech}
-            className="px-3 py-1 rounded-full bg-primary/10 border border-primary/30 text-text text-xs font-medium"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      {project.links && project.links.length > 0 && (
-        <div className="flex gap-3 pt-2">
-          {project.links.map((link) => (
-            <motion.a
-              key={link.label}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary text-sm font-medium hover:underline rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              variants={shouldReduceMotion ? undefined : projectLinkVariants}
-              initial="rest"
-              whileHover="hover"
-              whileTap="tap"
-              transition={{ duration: 0.15 }}
+      <div className="project-body flex min-w-0 flex-1 flex-col gap-4 px-6 pb-6 pt-5">
+        <h3 className="project-title text-xl font-semibold text-text">{project.title}</h3>
+        <p className="project-description text-sm leading-relaxed text-muted">{project.description}</p>
+        <div className="project-chips mt-auto flex flex-wrap gap-2">
+          {project.techStack.map((tech) => (
+            <span
+              key={tech}
+              className="project-chip rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-text"
             >
-              {link.label}
-            </motion.a>
+              {tech}
+            </span>
           ))}
         </div>
-      )}
+        {project.links && project.links.length > 0 && (
+          <div className="project-links flex flex-wrap gap-3 pt-2">
+            {project.links.map((link) => (
+              <motion.a
+                key={link.label}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link rounded text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                variants={shouldReduceMotion ? undefined : projectLinkVariants}
+                initial="rest"
+                whileHover="hover"
+                whileTap="tap"
+                transition={{ duration: 0.15 }}
+              >
+                {link.label}
+              </motion.a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -157,14 +157,18 @@ export default function ProjectsSection() {
   const projects = t('projects.items', { returnObjects: true }) as ProjectItem[]
 
   return (
-    <section id="projects" aria-label="Projects" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
+    <section
+      id="projects"
+      aria-label="Projects"
+      className="projects-shell relative flex h-full min-h-full w-full items-center justify-center overflow-hidden"
+    >
       <SectionBackground variant="projects" />
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center">
-        <AnimatedSection>
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-10">
+      <div className="projects-inner section-shell relative z-10 mx-auto w-full max-w-6xl px-4 text-center">
+        <AnimatedSection className="projects-content w-full">
+          <h2 className="section-heading text-3xl md:text-4xl font-bold text-text mb-10">
             {t('projects.sectionTitle')}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+          <div className="projects-grid grid auto-rows-fr grid-cols-1 gap-6 text-left md:grid-cols-2">
             {projects.map((project) => (
               <ProjectCard key={project.title} project={project} />
             ))}

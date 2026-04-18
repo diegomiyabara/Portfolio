@@ -6,10 +6,12 @@ interface HamburgerMenuProps {
   onToggle: () => void
   onClose: () => void
   activeSection: string
+  showProfileLink: boolean
 }
 
-const NAV_LINKS = [
+const BASE_NAV_LINKS = [
   { id: 'home', key: 'navbar.home' },
+  { id: 'about', key: 'navbar.about' },
   { id: 'skills', key: 'navbar.skills' },
   { id: 'projects', key: 'navbar.projects' },
   { id: 'contact', key: 'navbar.contact' },
@@ -20,8 +22,12 @@ export default function HamburgerMenu({
   onToggle,
   onClose,
   activeSection,
+  showProfileLink,
 }: HamburgerMenuProps) {
   const { t } = useTranslation()
+  const navLinks = showProfileLink
+    ? [{ id: 'profile', key: 'navbar.profile' as const }, ...BASE_NAV_LINKS]
+    : [...BASE_NAV_LINKS]
 
   return (
     <div className="md:hidden">
@@ -60,7 +66,7 @@ export default function HamburgerMenu({
             className="absolute top-full left-0 right-0 bg-surface border-b border-white/10 py-4"
           >
             <ul className="flex flex-col">
-              {NAV_LINKS.map(({ id, key }) => (
+              {navLinks.map(({ id, key }) => (
                 <li key={id}>
                   <a
                     href={`#${id}`}

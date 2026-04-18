@@ -27,7 +27,7 @@ interface SkillBadgeProps {
 
 function SkillBadge({ label }: SkillBadgeProps) {
   return (
-    <span className="px-4 py-2 rounded-full bg-surface border border-primary/20 text-text text-sm font-medium flex items-center gap-2 hover:border-primary/50 transition-colors">
+    <span className="skill-badge px-4 py-2 rounded-full bg-surface border border-primary/20 text-text text-sm font-medium flex items-center gap-2 hover:border-primary/50 transition-colors">
       <TechIcon skill={label} />
       {label}
     </span>
@@ -46,15 +46,15 @@ export default function SkillsSection() {
   return (
     <section id="skills" aria-label="Skills" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
       <SectionBackground variant="skills" />
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-4">
+      <div className="section-shell relative z-10 mx-auto w-full max-w-5xl px-4">
         <AnimatedSection>
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-12 text-center">
+          <h2 className="section-heading text-3xl md:text-4xl font-bold text-text mb-12 text-center">
             {t('skills.sectionTitle')}
           </h2>
-          <div className="flex flex-col gap-10">
+          <div className="skills-groups flex flex-col gap-10">
             {categories.map((category) => (
               <div key={category.name}>
-                <h3 className="text-xs font-semibold text-muted uppercase tracking-widest mb-4 pl-1">
+                <h3 className="skills-group-title text-xs font-semibold text-muted uppercase tracking-widest mb-4 pl-1">
                   {category.name}
                 </h3>
                 <div className="flex flex-wrap gap-3">

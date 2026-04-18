@@ -50,7 +50,7 @@ function ContactLink({ item, label }: ContactLinkProps) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-surface border border-primary/30 text-text hover:border-primary hover:text-primary transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      className="contact-link flex items-center gap-3 px-6 py-4 rounded-2xl bg-surface border border-primary/30 text-text hover:border-primary hover:text-primary transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       variants={shouldReduceMotion ? undefined : contactLinkVariants}
       initial="rest"
       whileHover="hover"
@@ -71,13 +71,13 @@ export default function ContactSection() {
   return (
     <section id="contact" aria-label="Contact" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">
       <SectionBackground variant="contact" />
-      <div className="relative z-10 mx-auto w-full max-w-2xl px-4 text-center">
+      <div className="section-shell relative z-10 mx-auto w-full max-w-2xl px-4 text-center">
         <AnimatedSection>
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-3">
+          <h2 className="section-heading text-3xl md:text-4xl font-bold text-text mb-3">
             {t('contact.sectionTitle')}
           </h2>
-          <p className="text-muted text-base mb-10">{t('contact.subtitle')}</p>
-          <div className="flex flex-col gap-4">
+          <p className="contact-subtitle text-muted text-base mb-10">{t('contact.subtitle')}</p>
+          <div className="contact-links flex flex-col gap-4">
             {contact.map((item) => (
               <ContactLink key={item.id} item={item} label={t(`contact.${item.id}`)} />
             ))}

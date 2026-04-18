@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useReducedMotion, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 interface Slide {
@@ -15,7 +15,17 @@ interface SectionSliderProps {
 export default function SectionSlider({ slides }: SectionSliderProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const shouldReduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 768px)')
+    const update = () => setIsMobile(media.matches)
+
+    update()
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -42,28 +52,45 @@ export default function SectionSlider({ slides }: SectionSliderProps) {
   }, [isPaused, shouldReduceMotion, slides.length])
 
   return (
-    <section className="relative flex h-[calc(100vh-8rem)] min-h-[560px] w-full overflow-hidden">
-      <motion.div
-        className="relative flex h-full w-full"
-        animate={{ x: shouldReduceMotion ? 0 : `-${activeIndex * 100}%` }}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.65, ease: 'easeOut' }}
-      >
-        {slides.map((slide) => (
-          <div key={slide.id} className="h-full min-w-full shrink-0 flex items-center justify-center overflow-hidden">
-            {slide.content}
-          </div>
-        ))}
-      </motion.div>
+    <section className="slider-shell relative flex h-[calc(100vh-8rem)] min-h-[560px] w-full overflow-hidden">
+      <div className="slider-viewport relative flex-1 min-h-0 overflow-hidden">
+        {isMobile ? (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slides[activeIndex]?.id}
+              className="slider-slide h-full w-full overflow-x-hidden overflow-y-auto"
+              initial={shouldReduceMotion ? false : { opacity: 0, x: 24 }}
+              animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+              exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -24 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: 'easeOut' }}
+            >
+              {slides[activeIndex]?.content}
+            </motion.div>
+          </AnimatePresence>
+        ) : (
+          <motion.div
+            className="relative flex h-full w-full"
+            animate={{ x: shouldReduceMotion ? 0 : `-${activeIndex * 100}%` }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.65, ease: 'easeOut' }}
+          >
+            {slides.map((slide) => (
+              <div key={slide.id} className="slider-slide flex h-full min-w-full shrink-0 items-center justify-center overflow-hidden">
+                {slide.content}
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </div>
 
-      <div className="absolute inset-x-0 bottom-6 z-20 flex flex-col items-center gap-4">
-        <div className="flex items-center gap-3 rounded-full bg-surface/90 px-3 py-2 shadow-xl shadow-black/20 backdrop-blur-xl">
+      <div className="slider-controls absolute inset-x-0 bottom-6 z-20 flex flex-col items-center gap-4">
+        <div className="slider-controls-bar flex items-center gap-3 rounded-full bg-surface/90 px-3 py-2 shadow-xl shadow-black/20 backdrop-blur-xl">
           <button
             type="button"
             onClick={() => setActiveIndex((current) => (current - 1 + slides.length) % slides.length)}
-            className="rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="slider-control-btn rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Tela anterior"
           >
-            ‹
+            {'<'}
           </button>
 
           <div className="flex items-center gap-2">
@@ -85,17 +112,17 @@ export default function SectionSlider({ slides }: SectionSliderProps) {
           <button
             type="button"
             onClick={() => setActiveIndex((current) => (current + 1) % slides.length)}
-            className="rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            aria-label="Próxima tela"
+            className="slider-control-btn rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            aria-label="Proxima tela"
           >
-            ›
+            {'>'}
           </button>
         </div>
 
         <button
           type="button"
           onClick={() => setIsPaused((value) => !value)}
-          className="rounded-full border border-primary/30 bg-surface/90 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="slider-play-btn rounded-full border border-primary/30 bg-surface/90 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           {isPaused ? 'Continuar' : 'Pausar'}
         </button>

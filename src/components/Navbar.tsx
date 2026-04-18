@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useActiveSection } from '../hooks/useActiveSection'
+import { useSplitHeroSection } from '../hooks/useSplitHeroSection'
 import LanguageToggle from './LanguageToggle'
 import SocialIconBar from './SocialIconBar'
 import HamburgerMenu from './HamburgerMenu'
 
-const SECTION_IDS = ['home', 'about', 'skills', 'projects', 'contact']
+const BASE_SECTION_IDS = ['home', 'about', 'skills', 'projects', 'contact'] as const
 
-const NAV_LINKS = [
+const BASE_NAV_LINKS = [
   { id: 'home', key: 'navbar.home' },
   { id: 'about', key: 'navbar.about' },
   { id: 'skills', key: 'navbar.skills' },
@@ -17,20 +18,27 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const { t } = useTranslation()
-  const activeSection = useActiveSection(SECTION_IDS)
+  const shouldSplitHero = useSplitHeroSection()
+  const sectionIds = shouldSplitHero
+    ? ['profile', ...BASE_SECTION_IDS]
+    : [...BASE_SECTION_IDS]
+  const navLinks = shouldSplitHero
+    ? [{ id: 'profile', key: 'navbar.profile' as const }, ...BASE_NAV_LINKS]
+    : [...BASE_NAV_LINKS]
+  const activeSection = useActiveSection(sectionIds)
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-sm border-b border-white/10" role="banner">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="navbar-shell max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="text-primary font-bold text-lg rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary tracking-tight">
+        <a href={shouldSplitHero ? '#profile' : '#home'} className="text-primary font-bold text-lg rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary tracking-tight">
           DM<span className="text-text/40">.</span>
         </a>
 
         {/* Desktop nav links */}
         <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
-          {NAV_LINKS.map(({ id, key }) => (
+          {navLinks.map(({ id, key }) => (
             <a
               key={id}
               href={`#${id}`}
@@ -62,6 +70,7 @@ export default function Navbar() {
             onToggle={() => setMenuOpen((v) => !v)}
             onClose={() => setMenuOpen(false)}
             activeSection={activeSection}
+            showProfileLink={shouldSplitHero}
           />
         </div>
       </div>
