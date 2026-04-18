@@ -41,7 +41,14 @@ interface SkillCategory {
 
 export default function SkillsSection() {
   const { t } = useTranslation()
-  const categories = t('skills.categories', { returnObjects: true }) as SkillCategory[]
+  const translatedCategories = t('skills.categories', { returnObjects: true })
+  const legacyItems = t('skills.items', { returnObjects: true })
+
+  const categories = Array.isArray(translatedCategories)
+    ? (translatedCategories as SkillCategory[])
+    : Array.isArray(legacyItems)
+      ? [{ name: t('skills.sectionTitle'), items: legacyItems as string[] }]
+      : []
 
   return (
     <section id="skills" aria-label="Skills" className="relative flex h-full min-h-full w-full items-center justify-center overflow-hidden">

@@ -37,8 +37,12 @@
         "items": ["React", "TypeScript", "JavaScript"]
       },
       {
+        "name": "Frameworks & Commerce",
+        "items": ["Magento", "Adobe Commerce"]
+      },
+      {
         "name": "Back-end",
-        "items": ["Magento", "Adobe Commerce", "PHP", "Node.js"]
+        "items": ["PHP", "Node.js"]
       },
       {
         "name": "Database & DevOps",
