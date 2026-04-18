@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { motion, useReducedMotion, useMotionValue, useTransform } from 'framer-motion'
 import heroImg from '../assets/hero.png'
+import profileImg from '../assets/foto.png'
 
 const btnPrimaryVariants = {
   rest: { scale: 1, opacity: 1 },
@@ -158,7 +159,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-primary/10 via-transparent to-secondary/10" />
             <div className="relative flex h-[320px] w-[320px] items-center justify-center rounded-full border-2 border-primary/30 bg-surface/80 shadow-xl shadow-black/20">
               <img
-                src={heroImg}
+                src={profileImg}
                 alt={t('hero.photoAlt')}
                 className="h-72 w-72 rounded-full object-cover"
               />
