@@ -78,12 +78,12 @@
         ]
       },
       {
-        "title": "Dashboard React",
+        "title": "Portfólio em React",
         "description": "Painel administrativo moderno construído com React e TypeScript, com gráficos interativos, autenticação e integração com APIs REST.",
         "techStack": ["React", "TypeScript", "Node.js", "MySQL"],
-        "imageAlt": "Screenshot do Dashboard React",
+        "imageAlt": "Screenshot do Portfólio em React",
         "links": [
-          { "label": "GitHub", "url": "https://github.com/diegomiyabara/react-dashboard" },
+          { "label": "GitHub", "url": "https://github.com/diegomiyabara/portfolio" },
           { "label": "Demo", "url": "https://demo.diegomiyabara.dev/dashboard" }
         ]
       }
