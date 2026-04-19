@@ -95,7 +95,7 @@ export default function HeroSection() {
           </div>
 
           <p className="hero-greeting mb-2 text-lg text-muted">{t('hero.greeting')}</p>
-          <h1 className="hero-title text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
+          <h1 className="hero-title mb-4 text-4xl font-bold tracking-tight text-text sm:text-5xl md:text-6xl">
             {t('hero.name')}
           </h1>
           <p className="hero-role mb-4 text-xl font-semibold text-primary md:text-2xl">
