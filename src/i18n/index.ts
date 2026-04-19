@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next'
 import ptJSON from './locales/pt.json'
 import enJSON from './locales/en.json'
 
-const savedLanguage = sessionStorage.getItem('language') ?? 'pt'
+const savedLanguage = typeof window !== 'undefined' ? localStorage.getItem('language') ?? 'en' : 'en'
 
 i18next.use(initReactI18next).init({
   resources: {
@@ -11,7 +11,7 @@ i18next.use(initReactI18next).init({
     en: { translation: enJSON },
   },
   lng: savedLanguage,
-  fallbackLng: 'pt',
+  fallbackLng: 'en',
   interpolation: {
     escapeValue: false,
   },
