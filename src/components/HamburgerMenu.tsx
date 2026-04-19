@@ -6,7 +6,8 @@ interface HamburgerMenuProps {
   isOpen: boolean
   onToggle: () => void
   onClose: () => void
-  activeSection: string
+  activeSlideIndex?: number
+  onSlideChange?: (index: number) => void
   showProfileLink: boolean
 }
 
@@ -14,7 +15,8 @@ export default function HamburgerMenu({
   isOpen,
   onToggle,
   onClose,
-  activeSection,
+  activeSlideIndex,
+  onSlideChange,
   showProfileLink,
 }: HamburgerMenuProps) {
   const { t } = useTranslation()
@@ -57,19 +59,21 @@ export default function HamburgerMenu({
             className="absolute top-full left-0 right-0 bg-surface border-b border-white/10 py-4"
           >
             <ul className="flex flex-col">
-              {navLinks.map(({ id, key }) => (
+              {navLinks.map(({ id, key }, index) => (
                 <li key={id}>
-                  <a
-                    href={`#${id}`}
-                    onClick={onClose}
+                  <button
+                    onClick={() => {
+                      if (onSlideChange) onSlideChange(index)
+                      onClose()
+                    }}
                     className={`block px-6 py-3 text-sm font-medium transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset ${
-                      activeSection === id
+                      activeSlideIndex === index
                         ? 'text-primary'
                         : 'text-muted hover:text-text'
                     }`}
                   >
                     {t(key)}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

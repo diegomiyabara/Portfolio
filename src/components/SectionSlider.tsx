@@ -10,13 +10,27 @@ interface Slide {
 
 interface SectionSliderProps {
   slides: Slide[]
+  activeIndex?: number
+  onSlideChange?: (index: number) => void
 }
 
-export default function SectionSlider({ slides }: SectionSliderProps) {
-  const [activeIndex, setActiveIndex] = useState(0)
+export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }: SectionSliderProps) {
+  const [internalActiveIndex, setInternalActiveIndex] = useState(activeIndex)
   const [isPaused, setIsPaused] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const shouldReduceMotion = useReducedMotion()
+
+  // Sync internal state with external activeIndex
+  useEffect(() => {
+    setInternalActiveIndex(activeIndex)
+  }, [activeIndex])
+
+  const currentIndex = internalActiveIndex
+
+  const changeSlide = (newIndex: number) => {
+    setInternalActiveIndex(newIndex)
+    onSlideChange?.(newIndex)
+  }
 
   useEffect(() => {
     const media = window.matchMedia('(max-width: 768px)')
@@ -30,10 +44,10 @@ export default function SectionSlider({ slides }: SectionSliderProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowRight') {
-        setActiveIndex((current) => (current + 1) % slides.length)
+        changeSlide((currentIndex + 1) % slides.length)
       }
       if (event.key === 'ArrowLeft') {
-        setActiveIndex((current) => (current - 1 + slides.length) % slides.length)
+        changeSlide((currentIndex - 1 + slides.length) % slides.length)
       }
     }
 
@@ -45,7 +59,7 @@ export default function SectionSlider({ slides }: SectionSliderProps) {
     if (isPaused || shouldReduceMotion) return
 
     const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % slides.length)
+      changeSlide((currentIndex + 1) % slides.length)
     }, 7000)
 
     return () => window.clearInterval(timer)
@@ -86,7 +100,7 @@ export default function SectionSlider({ slides }: SectionSliderProps) {
         <div className="slider-controls-bar flex items-center gap-3 rounded-full bg-surface/90 px-3 py-2 shadow-xl shadow-black/20 backdrop-blur-xl">
           <button
             type="button"
-            onClick={() => setActiveIndex((current) => (current - 1 + slides.length) % slides.length)}
+            onClick={() => changeSlide((currentIndex - 1 + slides.length) % slides.length)}
             className="slider-control-btn rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Tela anterior"
           >
@@ -98,7 +112,7 @@ export default function SectionSlider({ slides }: SectionSliderProps) {
               <button
                 key={slide.id}
                 type="button"
-                onClick={() => setActiveIndex(index)}
+                onClick={() => changeSlide(index)}
                 className={`h-3 w-3 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                   index === activeIndex
                     ? 'bg-primary scale-110'
@@ -111,7 +125,7 @@ export default function SectionSlider({ slides }: SectionSliderProps) {
 
           <button
             type="button"
-            onClick={() => setActiveIndex((current) => (current + 1) % slides.length)}
+            onClick={() => changeSlide((currentIndex + 1) % slides.length)}
             className="slider-control-btn rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Proxima tela"
           >
