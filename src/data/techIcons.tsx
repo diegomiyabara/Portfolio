@@ -59,15 +59,17 @@ const magentoIcon: FC<SvgProps> = ({ style, ...props }) => (
 
 const adobeCommerceIcon: FC<SvgProps> = ({ style, ...props }) => (
   <svg
-    viewBox="0 0 17 15"
+    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    style={{ color: '#FA0C00', ...style }}
+    style={{ ...style }}
     {...props}
   >
-    <path d="M5.996 0H0v14.34h5.996z" fill="currentColor" />
-    <path d="M10.215 0h5.988v14.34h-5.988z" fill="currentColor" />
-    <path d="m8.105 5.285 3.816 9.055H9.418l-1.141-2.883H5.484z" fill="currentColor" />
+    <rect width="24" height="24" rx="4" fill="#FA0C00" />
+    <path
+      d="M7.25 18.5h2.75l1.25-3.5h2.5l1.25 3.5h2.75L12 5.5 7.25 18.5zm2.1-5.75 1-2.8 1 2.8h-2z"
+      fill="#ffffff"
+    />
   </svg>
 )
 

@@ -15,20 +15,11 @@ interface SectionSliderProps {
 }
 
 export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }: SectionSliderProps) {
-  const [internalActiveIndex, setInternalActiveIndex] = useState(activeIndex)
   const [isPaused, setIsPaused] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const shouldReduceMotion = useReducedMotion()
 
-  // Sync internal state with external activeIndex
-  useEffect(() => {
-    setInternalActiveIndex(activeIndex)
-  }, [activeIndex])
-
-  const currentIndex = internalActiveIndex
-
   const changeSlide = (newIndex: number) => {
-    setInternalActiveIndex(newIndex)
     onSlideChange?.(newIndex)
   }
 
@@ -44,26 +35,26 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowRight') {
-        changeSlide((currentIndex + 1) % slides.length)
+        changeSlide((activeIndex + 1) % slides.length)
       }
       if (event.key === 'ArrowLeft') {
-        changeSlide((currentIndex - 1 + slides.length) % slides.length)
+        changeSlide((activeIndex - 1 + slides.length) % slides.length)
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [slides.length])
+  }, [activeIndex, slides.length])
 
   useEffect(() => {
     if (isPaused || shouldReduceMotion) return
 
     const timer = window.setInterval(() => {
-      changeSlide((currentIndex + 1) % slides.length)
+      changeSlide((activeIndex + 1) % slides.length)
     }, 7000)
 
     return () => window.clearInterval(timer)
-  }, [isPaused, shouldReduceMotion, slides.length])
+  }, [activeIndex, isPaused, shouldReduceMotion, slides.length])
 
   return (
     <section className="slider-shell relative flex h-[calc(100vh-8rem)] min-h-[560px] w-full overflow-hidden">
@@ -76,7 +67,8 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
               initial={shouldReduceMotion ? false : { opacity: 0, x: 24 }}
               animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
               exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -24 }}
-              transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: 'easeOut' }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.25, ease: 'easeOut' }}
+              style={{ willChange: 'transform, opacity' }}
             >
               {slides[activeIndex]?.content}
             </motion.div>
@@ -85,7 +77,8 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
           <motion.div
             className="relative flex h-full w-full"
             animate={{ x: shouldReduceMotion ? 0 : `-${activeIndex * 100}%` }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.65, ease: 'easeOut' }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
+            style={{ willChange: 'transform' }}
           >
             {slides.map((slide) => (
               <div key={slide.id} className="slider-slide flex h-full min-w-full shrink-0 items-center justify-center overflow-hidden">
@@ -100,7 +93,7 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
         <div className="slider-controls-bar flex items-center gap-3 rounded-full bg-surface/90 px-3 py-2 shadow-xl shadow-black/20 backdrop-blur-xl">
           <button
             type="button"
-            onClick={() => changeSlide((currentIndex - 1 + slides.length) % slides.length)}
+            onClick={() => changeSlide((activeIndex - 1 + slides.length) % slides.length)}
             className="slider-control-btn rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Tela anterior"
           >
@@ -125,9 +118,9 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
 
           <button
             type="button"
-            onClick={() => changeSlide((currentIndex + 1) % slides.length)}
+            onClick={() => changeSlide((activeIndex + 1) % slides.length)}
             className="slider-control-btn rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            aria-label="Proxima tela"
+            aria-label="Próxima tela"
           >
             {'>'}
           </button>
