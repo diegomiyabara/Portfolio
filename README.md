@@ -1,32 +1,32 @@
-# Portfolio Diego Miyabara
+# Diego Miyabara's Portfolio
 
 Demo: [https://portfolio-diego-miyabaras-projects.vercel.app/](https://portfolio-diego-miyabaras-projects.vercel.app/)
 
-## Visão geral
+## Overview
 
-Este projeto é um portfólio pessoal construído com React, TypeScript e Vite. Ele foi desenvolvido para apresentar experiência profissional em e-commerce, Adobe Commerce / Magento 2 e aplicações web modernas.
+This is a personal portfolio website built with React, TypeScript, and Vite. It was developed to showcase professional experience in e-commerce, Adobe Commerce / Magento 2, and modern web applications.
 
-A interface usa um slider de seções para navegar entre:
+The interface uses a section slider to navigate between:
 
 - Home
-- Sobre
+- About
 - Skills
-- Projetos
-- Contato
+- Projects
+- Contact
 
-Também oferece suporte a alternância de idiomas entre português e inglês, navegação via teclado e animações suaves com framer-motion.
+It also offers support for language switching between Portuguese and English, keyboard navigation, and smooth animations with framer-motion.
 
-## Recursos
+## Features
 
-- Navegação por slider com controles e indicadores
-- Autoplay com botão de pausar/continuar
-- Layout responsivo para desktop e mobile
-- Alternância de idioma (PT / EN)
-- Projetos com cards e links de demonstração
-- Seção de habilidades com ícones personalizados
-- Suporte a teclado (setas esquerda/direita)
+- Slider navigation with controls and indicators
+- Autoplay with pause/resume button
+- Responsive layout for desktop and mobile
+- Language toggle (PT / EN)
+- Project cards with demonstration links
+- Skills section with custom icons
+- Keyboard support (left/right arrows)
 
-## Tecnologias usadas
+## Technologies Used
 
 - React 19
 - TypeScript
@@ -38,75 +38,75 @@ Também oferece suporte a alternância de idiomas entre português e inglês, na
 - ESLint
 - Vitest
 
-## Estrutura do projeto
+## Project Structure
 
-- src/App.tsx — aplicação principal
-- src/components/Layout.tsx — layout global com navbar e estrutura de página
-- src/components/SectionSlider.tsx — slider principal das seções
-- src/components/Navbar.tsx — barra de navegação e toggle de idioma
-- src/components/SkillsSection.tsx — lista de habilidades com ícones
-- src/components/ProjectsSection.tsx — cards de projetos e informações de entrega
-- src/components/ContactSection.tsx — área de contato com links e formulário
-- src/config/slides.tsx — definição das seções do slider
-- src/i18n — configuração de internacionalização e traduções
-- src/data/techIcons.tsx — ícones das tecnologias usadas
+- src/App.tsx — main application
+- src/components/Layout.tsx — global layout with navbar and page structure
+- src/components/SectionSlider.tsx — main sections slider
+- src/components/Navbar.tsx — navigation bar and language toggle
+- src/components/SkillsSection.tsx — skills list with icons
+- src/components/ProjectsSection.tsx — project cards and delivery information
+- src/components/ContactSection.tsx — contact area with links and form
+- src/config/slides.tsx — slider sections definition
+- src/i18n — internationalization configuration and translations
+- src/data/techIcons.tsx — technology icons
 
-## Como executar
+## How to Run
 
-### Instalar dependências
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-### Rodar em desenvolvimento
+### Run in Development
 
 ```bash
 npm run dev
 ```
 
-### Build de produção
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-### Visualizar build local
+### Preview Build Locally
 
 ```bash
 npm run preview
 ```
 
-## Scripts disponíveis
+## Available Scripts
 
-- npm run dev — inicia a aplicação em modo de desenvolvimento
-- npm run build — gera a versão de produção
-- npm run preview — pré-visualiza a build gerada
-- npm run lint — executa ESLint
-- npm run test — executa os testes com Vitest
-- npm run test:watch — executa Vitest em modo watch
+- npm run dev — start the application in development mode
+- npm run build — generate the production version
+- npm run preview — preview the generated build
+- npm run lint — run ESLint
+- npm run test — run tests with Vitest
+- npm run test:watch — run Vitest in watch mode
 
-## Deploy
+## Deployment
 
-O projeto está publicado em Vercel:
+The project is published on Vercel:
 
 [https://portfolio-diego-miyabaras-projects.vercel.app/](https://portfolio-diego-miyabaras-projects.vercel.app/)
 
-### Passos para publicação gratuita
+### Steps for Free Deployment
 
-1. Conecte o repositório ao Vercel
-2. Use npm run build como comando de build
-3. Configure dist como diretório de saída
-4. Faça deploy automático a cada push
+1. Connect your repository to Vercel
+2. Use npm run build as build command
+3. Set dist as output directory
+4. Automatic deployment on each push
 
-## Customização
+## Customization
 
-- Adicione novos projetos em src/i18n/locales/pt.json e src/i18n/locales/en.json
-- Atualize os ícones em src/data/techIcons.tsx
-- Modifique as seções em src/config/slides.tsx
-- Ajuste o comportamento do slider em src/components/SectionSlider.tsx
+- Add new projects in src/i18n/locales/pt.json and src/i18n/locales/en.json
+- Update icons in src/data/techIcons.tsx
+- Modify sections in src/config/slides.tsx
+- Adjust slider behavior in src/components/SectionSlider.tsx
 
 ---
 
-Projeto criado para demonstrar competências em desenvolvimento front-end, animações responsivas e experiência em e-commerce.
+Project created to demonstrate skills in front-end development, responsive animations, and e-commerce experience.
 
