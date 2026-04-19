@@ -84,7 +84,7 @@
         "imageAlt": "Screenshot do Portfólio em React",
         "links": [
           { "label": "GitHub", "url": "https://github.com/diegomiyabara/portfolio" },
-          { "label": "Demo", "url": "https://demo.diegomiyabara.dev/dashboard" }
+          { "label": "Demo", "url": "https://portfolio-diego-miyabaras-projects.vercel.app/" }
         ]
       }
     ]
