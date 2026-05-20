@@ -1,6 +1,6 @@
 # Diego Miyabara's Portfolio
 
-Demo: https://portfolio-kappa-cyan-32.vercel.app/
+https://diegomiyabara.dev/
 
 ## Overview
 
