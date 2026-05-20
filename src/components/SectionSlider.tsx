@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import type { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface Slide {
   id: string
@@ -15,6 +16,7 @@ interface SectionSliderProps {
 }
 
 export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }: SectionSliderProps) {
+  const { t } = useTranslation()
   const [isPaused, setIsPaused] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const shouldReduceMotion = useReducedMotion()
@@ -95,7 +97,7 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
             type="button"
             onClick={() => changeSlide((activeIndex - 1 + slides.length) % slides.length)}
             className="slider-control-btn rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            aria-label="Tela anterior"
+            aria-label={t('slider.previous')}
           >
             {'<'}
           </button>
@@ -111,7 +113,7 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
                     ? 'bg-primary scale-110'
                     : 'bg-muted/50 hover:bg-muted'
                 }`}
-                aria-label={`Ir para ${slide.label}`}
+                aria-label={t('slider.goToSlide', { slide: slide.label })}
               />
             ))}
           </div>
@@ -120,7 +122,7 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
             type="button"
             onClick={() => changeSlide((activeIndex + 1) % slides.length)}
             className="slider-control-btn rounded-full border border-primary/30 bg-background px-3 py-2 text-xl text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            aria-label="Próxima tela"
+            aria-label={t('slider.next')}
           >
             {'>'}
           </button>
@@ -130,8 +132,9 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
           type="button"
           onClick={() => setIsPaused((value) => !value)}
           className="slider-play-btn rounded-full border border-primary/30 bg-surface/90 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          aria-label={isPaused ? t('slider.resume') : t('slider.pause')}
         >
-          {isPaused ? 'Continuar' : 'Pausar'}
+          {isPaused ? t('slider.resume') : t('slider.pause')}
         </button>
       </div>
     </section>

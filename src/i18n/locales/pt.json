@@ -101,6 +101,13 @@
     "rights": "Todos os direitos reservados.",
     "madeWith": "Feito com React & TypeScript"
   },
+  "slider": {
+    "previous": "Tela anterior",
+    "next": "Próxima tela",
+    "goToSlide": "Ir para {{slide}}",
+    "pause": "Pausar",
+    "resume": "Continuar"
+  },
   "languageToggle": {
     "label": "EN"
   }

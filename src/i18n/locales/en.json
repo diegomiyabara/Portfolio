@@ -100,6 +100,13 @@
     "rights": "All rights reserved.",
     "madeWith": "Built with React & TypeScript"
   },
+  "slider": {
+    "previous": "Previous slide",
+    "next": "Next slide",
+    "goToSlide": "Go to {{slide}}",
+    "pause": "Pause",
+    "resume": "Resume"
+  },
   "languageToggle": {
     "label": "PT"
   }
