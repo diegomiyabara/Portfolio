@@ -10,12 +10,12 @@
   "hero": {
     "greeting": "Olá, eu sou",
     "name": "Diego Miyabara",
-    "title": "Desenvolvedor Full Stack",
+    "title": "Desenvolvedor Fullstack",
     "subtitle": "Adobe Commerce · PHP · React · NodeJs · Typescript",
     "tagline": "5 anos desenvolvendo soluções e-commerce e aplicações web modernas. Especialista em Adobe Commerce, PHP e React.",
     "ctaContact": "Entre em contato",
     "ctaGithub": "Ver GitHub",
-    "photoAlt": "Diego Miyabara — Desenvolvedor Full Stack",
+    "photoAlt": "Diego Miyabara — Desenvolvedor Fullstack",
     "badge": "Disponível para oportunidades",
     "stats": {
       "impact": {
@@ -34,7 +34,7 @@
   },
   "about": {
     "sectionTitle": "Sobre mim",
-    "paragraph1": "Sou desenvolvedor Full Stack com 5 anos de experiência, especializado em e-commerce com Magento 2 / Adobe Commerce e desenvolvimento front-end moderno com React e TypeScript.",
+    "paragraph1": "Sou desenvolvedor Fullstack com 5 anos de experiência, especializado em e-commerce com Magento 2 / Adobe Commerce e desenvolvimento front-end moderno com React e TypeScript.",
     "paragraph2": "Tenho sólida experiência em criar módulos customizados, integrações com APIs de pagamento e otimizações de performance. No front-end, construo interfaces responsivas, acessíveis e com foco em experiência do usuário.",
     "highlight1": "5+",
     "highlight1Label": "Anos de experiência",
