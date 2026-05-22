@@ -85,6 +85,8 @@ npm run preview
 - npm run lint — run ESLint
 - npm run test — run tests with Vitest
 - npm run test:watch — run Vitest in watch mode
+- npm run test:e2e — run Playwright end-to-end tests
+- npm run test:ci — run lint, unit tests, and Playwright end-to-end tests
 
 ## Deployment
 
