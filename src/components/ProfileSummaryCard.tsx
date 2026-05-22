@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import profileImg from '../assets/foto.png'
+import profileImg from '../assets/foto.webp'
 
 interface ProfileSummaryCardProps {
   className?: string
@@ -15,6 +15,8 @@ export default function ProfileSummaryCard({ className = '' }: ProfileSummaryCar
         <img
           src={profileImg}
           alt={t('hero.photoAlt')}
+          loading="lazy"
+          decoding="async"
           className="profile-card-image h-[86%] w-[86%] rounded-full object-cover"
         />
       </div>
