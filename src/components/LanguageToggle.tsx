@@ -24,7 +24,7 @@ export default function LanguageToggle() {
       title={ariaLabel}
       className="inline-flex items-center gap-2 rounded-full border border-current bg-white/5 px-3 py-1 text-sm font-medium text-current transition hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
     >
-      <span className="font-semibold uppercase">{nextLang}</span>
+      <span className="font-semibold uppercase">{nextLang.toUpperCase()}</span>
     </button>
   )
 }
