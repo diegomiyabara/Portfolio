@@ -68,7 +68,7 @@ const adobeCommerceIcon: FC<SvgProps> = ({ style, ...props }) => (
     <rect width="24" height="24" rx="4" fill="currentColor" />
     <path
       d="M7.25 18.5h2.75l1.25-3.5h2.5l1.25 3.5h2.75L12 5.5 7.25 18.5zm2.1-5.75 1-2.8 1 2.8h-2z"
-      fill="currentColor"
+      fill="#ffffff"
     />
   </svg>
 )
