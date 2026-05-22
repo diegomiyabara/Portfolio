@@ -11,7 +11,7 @@ export default function LanguageToggle() {
     i18n.changeLanguage(nextLang)
     try {
       sessionStorage.setItem('language', nextLang)
-    } catch (e) {
+    } catch {
       // sessionStorage may be unavailable in some test environments
     }
   }
