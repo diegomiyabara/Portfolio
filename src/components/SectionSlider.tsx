@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -21,9 +21,9 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
   const [isMobile, setIsMobile] = useState(false)
   const shouldReduceMotion = useReducedMotion()
 
-  const changeSlide = (newIndex: number) => {
+  const changeSlide = useCallback((newIndex: number) => {
     onSlideChange?.(newIndex)
-  }
+  }, [onSlideChange])
 
   useEffect(() => {
     const media = window.matchMedia('(max-width: 768px)')
@@ -46,7 +46,7 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [activeIndex, slides.length])
+  }, [activeIndex, slides.length, changeSlide])
 
   useEffect(() => {
     if (isPaused || shouldReduceMotion) return
@@ -56,7 +56,7 @@ export default function SectionSlider({ slides, activeIndex = 0, onSlideChange }
     }, 7000)
 
     return () => window.clearInterval(timer)
-  }, [activeIndex, isPaused, shouldReduceMotion, slides.length])
+  }, [activeIndex, isPaused, shouldReduceMotion, slides.length, changeSlide])
 
   return (
     <section className="slider-shell relative flex h-[calc(100vh-8rem)] min-h-[560px] w-full overflow-hidden">
