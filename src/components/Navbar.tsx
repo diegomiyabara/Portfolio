@@ -27,16 +27,27 @@ export default function Navbar({ activeSlideIndex, onSlideChange }: NavbarProps)
     <header className="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-sm border-b border-white/10" role="banner">
       <div className="navbar-shell max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
-        <button onClick={() => handleNavClick(0)} className="text-primary font-bold text-lg rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary tracking-tight">
+        <a
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault()
+            handleNavClick(0)
+          }}
+          className="text-primary font-bold text-lg rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary tracking-tight"
+        >
           DM<span className="text-text/40">.</span>
-        </button>
+        </a>
 
         {/* Desktop nav links */}
         <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
           {navLinks.map(({ id, key }, index) => (
-            <button
+            <a
               key={id}
-              onClick={() => handleNavClick(index)}
+              href={`#${id}`}
+              onClick={(e) => {
+                e.preventDefault()
+                handleNavClick(index)
+              }}
               className={`text-sm font-medium transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                 activeSlideIndex === index
                   ? 'text-primary'
@@ -44,7 +55,7 @@ export default function Navbar({ activeSlideIndex, onSlideChange }: NavbarProps)
               }`}
             >
               {t(key)}
-            </button>
+            </a>
           ))}
         </nav>
 
