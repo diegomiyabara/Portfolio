@@ -1,11 +1,14 @@
-import type { ReactElement } from 'react'
+import type { ReactElement, ComponentType, LazyExoticComponent } from 'react'
 import type { TFunction } from 'i18next'
-import ProfileSection from '../components/ProfileSection'
 import HeroSection from '../components/HeroSection'
-import AboutSection from '../components/AboutSection'
-import SkillsSection from '../components/SkillsSection'
-import ProjectsSection from '../components/ProjectsSection'
-import ContactSection from '../components/ContactSection'
+
+interface SectionComponents {
+  ProfileSection: LazyExoticComponent<ComponentType>
+  AboutSection: LazyExoticComponent<ComponentType>
+  SkillsSection: LazyExoticComponent<ComponentType>
+  ProjectsSection: LazyExoticComponent<ComponentType>
+  ContactSection: LazyExoticComponent<ComponentType>
+}
 
 interface AppSlide {
   id: string
@@ -13,15 +16,19 @@ interface AppSlide {
   content: ReactElement
 }
 
-export function createSlides(t: TFunction, shouldSplitHero: boolean): AppSlide[] {
+export function createSlides(
+  t: TFunction,
+  shouldSplitHero: boolean,
+  sections: SectionComponents,
+): AppSlide[] {
   return [
     ...(shouldSplitHero
-      ? [{ id: 'profile', label: t('navbar.profile'), content: <ProfileSection /> }]
+      ? [{ id: 'profile', label: t('navbar.profile'), content: <sections.ProfileSection /> }]
       : []),
     { id: 'home', label: t('navbar.home'), content: <HeroSection /> },
-    { id: 'about', label: t('navbar.about'), content: <AboutSection /> },
-    { id: 'skills', label: t('navbar.skills'), content: <SkillsSection /> },
-    { id: 'projects', label: t('navbar.projects'), content: <ProjectsSection /> },
-    { id: 'contact', label: t('navbar.contact'), content: <ContactSection /> },
+    { id: 'about', label: t('navbar.about'), content: <sections.AboutSection /> },
+    { id: 'skills', label: t('navbar.skills'), content: <sections.SkillsSection /> },
+    { id: 'projects', label: t('navbar.projects'), content: <sections.ProjectsSection /> },
+    { id: 'contact', label: t('navbar.contact'), content: <sections.ContactSection /> },
   ]
 }
