@@ -73,8 +73,7 @@
         "techStack": ["Magento 2", "PHP", "MySQL", "Docker"],
         "imageAlt": "Screenshot da Loja Magento Personalizada",
         "links": [
-          { "label": "GitHub", "url": "https://github.com/diegomiyabara/magento-store" },
-          { "label": "Demo", "url": "https://demo.diegomiyabara.dev/magento" }
+          { "label": "GitHub", "url": "https://github.com/diegomiyabara/magento-store" }
         ]
       },
       {
