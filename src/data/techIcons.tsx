@@ -62,13 +62,13 @@ const adobeCommerceIcon: FC<SvgProps> = ({ style, ...props }) => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    style={{ ...style }}
+    style={{ color: '#FA0C00', ...style }}
     {...props}
   >
-    <rect width="24" height="24" rx="4" fill="#FA0C00" />
+    <rect width="24" height="24" rx="4" fill="currentColor" />
     <path
       d="M7.25 18.5h2.75l1.25-3.5h2.5l1.25 3.5h2.75L12 5.5 7.25 18.5zm2.1-5.75 1-2.8 1 2.8h-2z"
-      fill="#ffffff"
+      fill="currentColor"
     />
   </svg>
 )
