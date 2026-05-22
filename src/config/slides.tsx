@@ -3,11 +3,11 @@ import type { TFunction } from 'i18next'
 import HeroSection from '../components/HeroSection'
 
 interface SectionComponents {
-  ProfileSection: LazyExoticComponent<ComponentType>
-  AboutSection: LazyExoticComponent<ComponentType>
-  SkillsSection: LazyExoticComponent<ComponentType>
-  ProjectsSection: LazyExoticComponent<ComponentType>
-  ContactSection: LazyExoticComponent<ComponentType>
+  ProfileSection: ComponentType | LazyExoticComponent<ComponentType>
+  AboutSection: ComponentType | LazyExoticComponent<ComponentType>
+  SkillsSection: ComponentType | LazyExoticComponent<ComponentType>
+  ProjectsSection: ComponentType | LazyExoticComponent<ComponentType>
+  ContactSection: ComponentType | LazyExoticComponent<ComponentType>
 }
 
 interface AppSlide {

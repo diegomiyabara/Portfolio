@@ -1,5 +1,6 @@
 import './App.css'
 import { Suspense, lazy, useState } from 'react'
+import type { ComponentType, LazyExoticComponent } from 'react'
 import { useTranslation } from 'react-i18next'
 import Layout from './components/Layout'
 import SectionSlider from './components/SectionSlider'
@@ -11,11 +12,13 @@ import SkillsSectionEager from './components/SkillsSection'
 import ProjectsSectionEager from './components/ProjectsSection'
 import ContactSectionEager from './components/ContactSection'
 
-let ProfileSection: any
-let AboutSection: any
-let SkillsSection: any
-let ProjectsSection: any
-let ContactSection: any
+type SectionComponent = ComponentType<Record<string, unknown>> | LazyExoticComponent<ComponentType<Record<string, unknown>>>
+
+let ProfileSection: SectionComponent
+let AboutSection: SectionComponent
+let SkillsSection: SectionComponent
+let ProjectsSection: SectionComponent
+let ContactSection: SectionComponent
 
 if (process.env.NODE_ENV === 'test') {
   ProfileSection = ProfileSectionEager
