@@ -5,12 +5,31 @@ import Layout from './components/Layout'
 import SectionSlider from './components/SectionSlider'
 import { useSplitHeroSection } from './hooks/useSplitHeroSection'
 import { createSlides } from './config/slides'
+import ProfileSectionEager from './components/ProfileSection'
+import AboutSectionEager from './components/AboutSection'
+import SkillsSectionEager from './components/SkillsSection'
+import ProjectsSectionEager from './components/ProjectsSection'
+import ContactSectionEager from './components/ContactSection'
 
-const ProfileSection = lazy(() => import('./components/ProfileSection'))
-const AboutSection = lazy(() => import('./components/AboutSection'))
-const SkillsSection = lazy(() => import('./components/SkillsSection'))
-const ProjectsSection = lazy(() => import('./components/ProjectsSection'))
-const ContactSection = lazy(() => import('./components/ContactSection'))
+let ProfileSection: any
+let AboutSection: any
+let SkillsSection: any
+let ProjectsSection: any
+let ContactSection: any
+
+if (process.env.NODE_ENV === 'test') {
+  ProfileSection = ProfileSectionEager
+  AboutSection = AboutSectionEager
+  SkillsSection = SkillsSectionEager
+  ProjectsSection = ProjectsSectionEager
+  ContactSection = ContactSectionEager
+} else {
+  ProfileSection = lazy(() => import('./components/ProfileSection'))
+  AboutSection = lazy(() => import('./components/AboutSection'))
+  SkillsSection = lazy(() => import('./components/SkillsSection'))
+  ProjectsSection = lazy(() => import('./components/ProjectsSection'))
+  ContactSection = lazy(() => import('./components/ContactSection'))
+}
 
 function App() {
   const { t } = useTranslation()
