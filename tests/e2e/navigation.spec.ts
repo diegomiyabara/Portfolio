@@ -6,18 +6,18 @@ test.describe('Portfolio navigation', () => {
   })
 
   test('should render the main sections and allow navigation', async ({ page }) => {
-    await expect(page.getByRole('button', { name: 'Home' })).toBeVisible()
-    await expect(page.getByRole('button', { name: 'About' })).toBeVisible()
-    await expect(page.getByRole('button', { name: 'Skills' })).toBeVisible()
-    await expect(page.getByRole('button', { name: 'Projects' })).toBeVisible()
-    await expect(page.getByRole('button', { name: 'Contact' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Home' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'About' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Skills' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Projects' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Contact' })).toBeVisible()
 
     await page.getByRole('button', { name: 'Projects' }).click()
     await expect(page.getByRole('link', { name: 'View GitHub' })).toBeVisible()
 
-    const getInTouch = page.locator('a[href="#contact"]')
-    await expect(getInTouch).toBeVisible()
-    await page.evaluate(() => document.querySelector('a[href="#contact"]')?.click())
+    const contactLink = page.getByRole('link', { name: 'Contact' })
+    await expect(contactLink).toBeVisible()
+    await contactLink.click()
     await page.waitForTimeout(500)
     await expect(page.locator('#contact')).toBeVisible()
   })
