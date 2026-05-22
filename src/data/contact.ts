@@ -7,7 +7,7 @@ export interface ContactItem {
 const contact: ContactItem[] = [
   {
     id: 'linkedin',
-    href: 'https://linkedin.com/in/diegomiyabara',
+    href: 'https://www.linkedin.com/in/diegomiyabara',
     available: true,
   },
   {
